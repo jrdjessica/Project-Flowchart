@@ -28,7 +28,7 @@ class Customer(db.Model):
     __tablename__ = 'customers'
 
     customer_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     fname = db.Column(db.String)
     lname = db.Column(db.String)
     city = db.Column(db.String)
@@ -49,7 +49,7 @@ class Order(db.Model):
     __tablename__ = 'orders'
 
     order_id = db.Column(db.String, primary_key=True)
-    customer_id = db.Column(db.Integer, db.ForeignKey('customers.user_id'))
+    customer_id = db.Column(db.Integer, db.ForeignKey('customers.customer_id'))
     num_items = db.Column(db.Integer)
     date = db.Column(db.DateTime)
     total = db.Column(db.Integer)
@@ -62,7 +62,7 @@ class Order(db.Model):
         f'<Order order_id={self.order_id} num_items={self.num_items} date={self.date}>'
 
 
-def connect_to_db(flask_app, db_uri="postgresql:///ratings", echo=True):
+def connect_to_db(flask_app, db_uri="postgresql:///customers", echo=True):
     flask_app.config["SQLALCHEMY_DATABASE_URI"] = db_uri
     flask_app.config["SQLALCHEMY_ECHO"] = echo
     flask_app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
