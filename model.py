@@ -1,5 +1,6 @@
 """Models for etsy dashboard app."""
 
+from datetime import datetime
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
@@ -33,3 +34,16 @@ class Customer(db.Model):
     def __repr__(self):
 
         return f'<Customer customer_id={self.customer_id}> fname={self.fname}'
+
+
+class Order(db.Model):
+    order_id = db.Column(db.String, primary_key=True)
+    customer_id = db.Column(db.Integer, db.ForeignKey('customers.user_id'))
+    num_items = db.Column(db.Integer)
+    date = db.Column(db.DateTime)
+    total = db.Column(db.Integer)
+    net = db.Column(db.Integer)
+
+    def __repr__(self):
+
+        f'<Order order_id={self.order_id} num_items={self.num_items} date={self.date}>'
