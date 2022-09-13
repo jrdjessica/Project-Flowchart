@@ -6,7 +6,7 @@ from model import db, User, Customer, Order, connect_to_db
 def create_user(email, password):
     """Create a user."""
 
-    user = User(email, password)
+    user = User(email=email, password=password)
 
     return user
 
@@ -33,3 +33,9 @@ def get_location(customer_id):
         location = country
 
     return location
+
+
+if __name__ == "__main__":
+    from server import app
+
+    connect_to_db(app)
