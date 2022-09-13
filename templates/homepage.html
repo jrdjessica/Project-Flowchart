@@ -5,4 +5,19 @@
 {% block body %}
 <h1>Welcome</h1>
 
+<h2>Create an account</h2>
+<form action="/" method="POST">
+    <p>
+        <label for="create-email">Enter email: </label>
+        <input type="text" name="email" id="create-email"></input>
+    </p>
+    <p>
+        <label for="create-pass">Enter password: </label>
+        <input type="text" name="password" id="create-pass"></input>
+    </p>
+    <button type="submit">Submit</button>
+</form>
+
+<h2>Log in</h2>
+
 {% endblock body %}
