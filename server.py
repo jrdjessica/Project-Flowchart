@@ -14,12 +14,14 @@ app.jinja_env.undefined = StrictUndefined
 
 @app.route('/')
 def show_homepage():
+    """Displays homepage."""
 
     return render_template('homepage.html')
 
 
 @app.route('/account', methods=['POST'])
 def create_user_account():
+    """User creates an account."""
 
     email = request.form.get('email')
     password = request.form.get('password')
@@ -35,6 +37,25 @@ def create_user_account():
         db.session.commit()
         flash('Congratulations. Your account was created.')
     return redirect('/')
+
+
+@app.route('/login', methods=['POST'])
+def user_login():
+    """User logs in."""
+
+    email = request.form.get('email')
+    password = request.form.get('password')
+
+    user = crud.get_user_by_email(email)
+
+    # check if user has an account and if password matches
+    if not user or user.password != password:
+        flash('Error. Try again.')
+        return redirect('/')
+    else:
+        flash('You are logged in.')
+        return redirect('/')
+        # return render_template('upload.html')
 
 
 if __name__ == "__main__":
