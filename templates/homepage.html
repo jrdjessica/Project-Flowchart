@@ -6,7 +6,7 @@
 <h1>Welcome</h1>
 
 <h2>Create an account</h2>
-<form action="/" method="POST">
+<form action="/account" method="POST">
     <p>
         <label for="create-email">Enter email: </label>
         <input type="text" name="email" id="create-email"></input>
@@ -19,5 +19,16 @@
 </form>
 
 <h2>Log in</h2>
+<form action="/login" method="POST">
+    <p>
+        <label for="login-email">Enter email: </label>
+        <input type="text" name="email" id="login-email"></input>
+    </p>
+    <p>
+        <label for="login-pass">Enter password: </label>
+        <input type="text" name="password" id="login-pass"></input>
+    </p>
+    <button type="submit">Submit</button>
+</form>
 
 {% endblock body %}
