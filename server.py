@@ -54,8 +54,8 @@ def user_login():
         return redirect('/')
     else:
         flash('You are logged in.')
-        return redirect('/')
-        # return render_template('upload.html')
+        # return redirect('/')
+        return render_template('upload.html')
 
 
 if __name__ == "__main__":

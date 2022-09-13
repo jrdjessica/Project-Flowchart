@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<h1>Welcome</h1>
+
+<h2>Instructions for upload</h2>
+<p>...</p>
+<form action="upload" method="POST">
+    <p>
+        <label for="upload">Upload your file here: </label>
+        <input type="file" id="upload">
+    </p>
+    <button type="submit">Submit</button>
+</form>
+
+{% endblock body%}
