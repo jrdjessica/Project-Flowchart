@@ -91,7 +91,10 @@ def upload_file():
                 db.session.add(order)
                 db.session.commit()
 
-    return redirect('/dashboard')
+        return redirect('/dashboard')
+
+    else:
+        flash('Error.')
 
 
 @app.route('/dashboard')

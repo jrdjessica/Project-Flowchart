@@ -1,7 +1,23 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html>
 
-{% block body %}
-<h1>dashboard</h1>
-<p>hello</p>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=devicewidth">
+    <title>
+        Dashboard
+    </title>
+    <link rel="stylesheet" type="text/css" href="static/css/style.css" />
+</head>
 
-{% endblock body %}
+<body>
+    <h1>Map</h1>
+    <div id="map"></div>
+    <script src="/static/js/map.js"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwOT25KrrqDIpWFlX8-wWhGJYjOlW52Yc&callback=initMap&v=weekly"
+        defer>
+        </script>
+</body>
+
+</html>
