@@ -1,6 +1,7 @@
 """CRUD operations."""
 
 import csv
+from flask import session
 from model import db, User, Customer, Order, connect_to_db
 
 
@@ -23,10 +24,23 @@ def get_user_by_email(email):
 def create_customer(line):
     """Create a customer."""
 
-    customer = Customer(fname=line['First Name'], lname=line['Last Name'],
+    user_id = session['user_id']
+
+    customer = Customer(user_id=user_id, fname=line['First Name'], lname=line['Last Name'],
                         city=line['Ship City'], state=line['Ship State'], country=line['Ship Country'])
 
     return customer
+
+
+def create_order(line):
+    """Create an order."""
+
+    customer_id = session['customer_id']
+
+    order = Order(order_id=line['Order ID'], customer_id=customer_id, num_items=line['Number of Items'], date=line['Sale Date'],
+                  total=line['Order Total'], net=line['Order Net'])
+
+    return order
 
 
 def add_to_database(file):

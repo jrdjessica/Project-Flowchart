@@ -86,7 +86,7 @@ def example_data():
     db.session.commit()
 
 
-def connect_to_db(flask_app, db_uri="postgresql:///customers", echo=True):
+def connect_to_db(flask_app, db_uri="postgresql:///shop", echo=True):
     """Connect the database to the Flask app."""
 
     flask_app.config["SQLALCHEMY_DATABASE_URI"] = db_uri
@@ -104,6 +104,6 @@ if __name__ == "__main__":
 
     # creates tables and sample data
     db.create_all()
-    example_data()
+    # example_data()
 
     print("Connected to the db!")

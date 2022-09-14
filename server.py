@@ -1,13 +1,14 @@
 """Server for running app."""
 
 
-from flask import Flask, render_template, redirect, request, flash
+from flask import Flask, render_template, redirect, request, flash, session
 from model import db, connect_to_db
 from werkzeug.utils import secure_filename
 
 
 import crud
 import csv
+import os
 
 
 from jinja2 import StrictUndefined
@@ -53,6 +54,8 @@ def user_login():
 
     user = crud.get_user_by_email(email)
 
+    session['user_id'] = user.user_id
+
     # check if user has an account and if password matches
     if not user or user.password != password:
         flash('Error. Try again.')
@@ -64,22 +67,29 @@ def user_login():
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
-    """User uploads csv file."""
+    """User uploads csv file that is parsed."""
 
     file = request.files['file']
 
     if file:
         filename = secure_filename(file.filename)
+        file.save(os.path.join('input', filename))
 
         with open(f'input/{filename}', 'r') as csvfile:
             csv_read = csv.DictReader(csvfile)
 
             for line in csv_read:
                 customer = crud.create_customer(line)
-                db.session.add(customer)
-            db.session.commit()
 
-    # file.save(os.path.join('input', filename))
+                db.session.add(customer)
+                db.session.commit()
+
+                session['customer_id'] = customer.customer_id
+
+                order = crud.create_order(line)
+
+                db.session.add(order)
+                db.session.commit()
 
     return render_template('dashboard.html')
 
