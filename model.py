@@ -31,6 +31,7 @@ class Customer(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     fname = db.Column(db.String)
     lname = db.Column(db.String)
+    street = db.Column(db.String)
     city = db.Column(db.String)
     state = db.Column(db.String)
     country = db.Column(db.String)

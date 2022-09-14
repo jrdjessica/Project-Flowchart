@@ -26,7 +26,7 @@ def create_customer(line):
 
     user_id = session['user_id']
 
-    customer = Customer(user_id=user_id, fname=line['First Name'], lname=line['Last Name'],
+    customer = Customer(user_id=user_id, fname=line['First Name'], lname=line['Last Name'], street=line['Street 1'],
                         city=line['Ship City'], state=line['Ship State'], country=line['Ship Country'])
 
     return customer
