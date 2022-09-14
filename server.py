@@ -71,7 +71,7 @@ def upload_file():
     if file:
         filename = secure_filename(file.filename)
 
-        with open(filename, 'r') as csvfile:
+        with open(f'input/{filename}', 'r') as csvfile:
             csv_read = csv.DictReader(csvfile)
 
             for line in csv_read:
