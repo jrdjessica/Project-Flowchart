@@ -20,6 +20,15 @@ def get_user_by_email(email):
     return user
 
 
+def create_customer():
+    """Create a customer."""
+
+    customer = Customer(fname=line['First Name'], lname=line['Last Name'],
+                        city=line['Ship City'], state=line['Ship State'], country=line['Ship Country'])
+
+    return customer
+
+
 def add_to_database(file):
     """Parse through csv file and add data to database."""
 
