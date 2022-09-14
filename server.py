@@ -91,6 +91,13 @@ def upload_file():
                 db.session.add(order)
                 db.session.commit()
 
+    return redirect('/dashboard')
+
+
+@app.route('/dashboard')
+def show_dashboard():
+    """Shows dashboard."""
+
     return render_template('dashboard.html')
 
 
