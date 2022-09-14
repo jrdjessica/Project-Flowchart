@@ -1,9 +1,17 @@
 """Server for running app."""
 
+
+from model import Customer
 from flask import Flask, render_template, redirect, request, flash
 from model import db, connect_to_db
+from werkzeug.utils import secure_filename
+
 
 import crud
+import csv
+import pandas as pd
+import sqlalchemy
+
 
 from jinja2 import StrictUndefined
 
@@ -11,6 +19,10 @@ app = Flask(__name__)
 app.secret_key = "dev"
 app.jinja_env.undefined = StrictUndefined
 
+
+# engine = sqlalchemy.create_engine('postgresql://jrdjessica:password@localhost:5000/customers')
+
+# data = pd.read_csv("EtsySoldOrders2020.csv")
 
 @app.route('/')
 def show_homepage():
@@ -54,8 +66,36 @@ def user_login():
         return redirect('/')
     else:
         flash('You are logged in.')
-        # return redirect('/')
         return render_template('upload.html')
+
+
+@app.route('/upload', methods=['POST'])
+def upload_file():
+    """User uploads csv file."""
+
+    file = request.files['file']
+
+    if file:
+        filename = secure_filename(file.filename)
+
+    with open(filename, 'r') as csvfile:
+        csv_read = csv.DictReader(csvfile)
+        for line in csv_read:
+            customer = Customer(fname=line['First Name'], lname=line['Last Name'],
+                                city=line['Ship City'], state=line['Ship State'], country=line['Ship Country'])
+
+            print(customer)
+            db.session.add(customer)
+        db.session.commit()
+        # line['First Name']
+
+    #     # spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
+    #     # for row in spamreader:
+    #     #     print(row)
+
+    # file.save(os.path.join('input', filename))
+
+    return render_template('dashboard.html')
 
 
 if __name__ == "__main__":

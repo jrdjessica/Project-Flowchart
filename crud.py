@@ -1,5 +1,6 @@
 """CRUD operations."""
 
+import csv
 from model import db, User, Customer, Order, connect_to_db
 
 
@@ -17,6 +18,15 @@ def get_user_by_email(email):
     user = User.query.filter(User.email == email).first()
 
     return user
+
+
+def add_to_database(file):
+    """Parse through csv file and add data to database."""
+
+    with open(file, newline='') as csvFile:
+        reader = csv.DictReader(csvFile)
+        for row in reader:
+            print(row['date'])
 
 
 def get_location(customer_id):
