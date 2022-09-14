@@ -20,7 +20,7 @@ def get_user_by_email(email):
     return user
 
 
-def create_customer():
+def create_customer(line):
     """Create a customer."""
 
     customer = Customer(fname=line['First Name'], lname=line['Last Name'],
