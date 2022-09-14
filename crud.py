@@ -32,6 +32,15 @@ def create_customer(line):
     return customer
 
 
+def add_to_database(file):
+    """Parse through csv file and add data to database."""
+
+    with open(file, newline='') as csvFile:
+        reader = csv.DictReader(csvFile)
+        for row in reader:
+            print(row['date'])
+
+
 def create_order(line):
     """Create an order."""
 
@@ -41,15 +50,6 @@ def create_order(line):
                   total=line['Order Total'], net=line['Order Net'])
 
     return order
-
-
-def add_to_database(file):
-    """Parse through csv file and add data to database."""
-
-    with open(file, newline='') as csvFile:
-        reader = csv.DictReader(csvFile)
-        for row in reader:
-            print(row['date'])
 
 
 def get_location(customer_id):
