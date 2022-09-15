@@ -2,7 +2,7 @@
 
 import csv
 from flask import session
-from model import db, User, Customer, Order, connect_to_db
+from model import User, Customer, Order, connect_to_db
 
 
 def create_user(email, password):
