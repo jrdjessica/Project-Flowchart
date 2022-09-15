@@ -1,15 +1,11 @@
 """Server for running app."""
 
 
-from flask import Flask, render_template, redirect, request, flash, session
-from model import db, connect_to_db
-from werkzeug.utils import secure_filename
-
+from flask import Flask, render_template, redirect, request, flash, session, jsonify
+from model import db, connect_to_db, User, Customer, Order
 
 import crud
 import seed
-import csv
-import os
 
 
 from jinja2 import StrictUndefined
@@ -85,6 +81,44 @@ def show_dashboard():
     """Shows dashboard."""
 
     return render_template('dashboard.html')
+
+
+@app.route('/api/shop')
+def shop_info():
+    """Returns JSON of shop data."""
+
+    customers = [
+        {
+            'customer_id': cust.customer_id,
+            'fname': cust.fname,
+            'lname': cust.lname,
+            'street': cust.street,
+            'city': cust.city,
+            'state': cust.state,
+            'country': cust.country
+        }
+        for cust in Customer.query.all()
+    ]
+
+    orders = [
+        {
+            'customer_id': order.customer.customer_id,
+            'fname': order.customer.fname,
+            'lname': order.customer.lname,
+            'street': order.customer.street,
+            'city': order.customer.city,
+            'state': order.customer.state,
+            'country': order.customer.country,
+            'order_id': order.order_id,
+            'num_items': order.num_items,
+            'date': order.date,
+            'total': order.total,
+            'net': order.net,
+        }
+        for order in Order.query.all()
+    ]
+
+    return jsonify(orders)
 
 
 if __name__ == "__main__":

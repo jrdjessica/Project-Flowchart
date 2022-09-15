@@ -18,6 +18,12 @@ function initMap() {
     codeAddress(address1, map);
     codeAddress(address2, map);
     codeAddress(address3, map);
+
+    fetch('/api/shop')
+        .then(res => res.json())
+        .then(shop => {
+            console.log(shop)
+        })
 }
 
 // Add markers to map
