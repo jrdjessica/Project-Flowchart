@@ -32,8 +32,10 @@ class Customer(db.Model):
     fname = db.Column(db.String)
     lname = db.Column(db.String)
     street = db.Column(db.String)
+    street2 = db.Column(db.String)
     city = db.Column(db.String)
     state = db.Column(db.String)
+    zipcode = db.Column(db.String)
     country = db.Column(db.String)
 
     user = db.relationship('User', back_populates='customer')

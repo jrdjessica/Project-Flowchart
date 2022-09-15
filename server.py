@@ -87,27 +87,16 @@ def show_dashboard():
 def shop_info():
     """Returns JSON of shop data."""
 
-    customers = [
-        {
-            'customer_id': cust.customer_id,
-            'fname': cust.fname,
-            'lname': cust.lname,
-            'street': cust.street,
-            'city': cust.city,
-            'state': cust.state,
-            'country': cust.country
-        }
-        for cust in Customer.query.all()
-    ]
-
     orders = [
         {
             'customer_id': order.customer.customer_id,
             'fname': order.customer.fname,
             'lname': order.customer.lname,
             'street': order.customer.street,
+            'street2': order.customer.street2,
             'city': order.customer.city,
             'state': order.customer.state,
+            'zipcode': order.customer.zipcode,
             'country': order.customer.country,
             'order_id': order.order_id,
             'num_items': order.num_items,

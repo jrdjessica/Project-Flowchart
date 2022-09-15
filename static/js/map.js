@@ -21,10 +21,24 @@ function initMap() {
 
     fetch('/api/shop')
         .then(res => res.json())
-        .then(shop => {
-            console.log(shop)
-        })
+        .then(orders => {
+            for (let i in orders) {
+                const address_comps = ['street', 'street2', 'city', 'state', 'zipcode', 'country'];
+                let address = '';
+                for (const comp of address_comps) {
+                    if (orders[i][comp] != '') {
+                        address += orders[i][comp];
+                        if (comp != 'country') {
+                            address += ', '
+                        }
+                    }
+                }
+                console.log(address);
+            }
+        }
+        )
 }
+
 
 // Add markers to map
 function addMarker(location, map) {
