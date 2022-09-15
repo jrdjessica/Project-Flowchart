@@ -28,3 +28,22 @@ function addMarker(location, map) {
     });
 }
 
+
+// Takes in address, returns lat and lng, add to map
+function codeAddress(address, map) {
+    geocoder.geocode({ 'address': address }, function (results, status) {
+
+        if (status == 'OK') {
+            let latitude = results[0].geometry.location.lat();
+            let longitude = results[0].geometry.location.lng();
+
+            let marker = new google.maps.Marker({
+                position: { lat: latitude, lng: longitude },
+                map: map
+            })
+        } else {
+            alert('Address was unsuccessful.');
+        }
+    });
+}
+
