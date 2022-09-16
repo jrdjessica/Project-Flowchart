@@ -16,9 +16,6 @@ function initMap() {
             for (let order of orders) {
                 lat = order.latitude
                 lng = order.longitude
-                // console.log(lat)
-                // console.log(lng)
-                console.log(typeof lat)
                 addMarker({ lat: lat, lng: lng }, map)
             }
         }
@@ -34,7 +31,7 @@ function addMarker(location, map) {
     });
 }
 
-
+// Maps javascript api - geocoding
 // Takes in address, returns lat and lng, add to map
 // function codeAddress(address, map) {
 //     geocoder.geocode({ 'address': address }, function (results, status) {

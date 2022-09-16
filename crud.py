@@ -2,8 +2,8 @@
 
 import csv
 from flask import session
-from model import User, Customer, Order, connect_to_db, db
-import time
+from model import User, Customer, Order, connect_to_db
+import os
 
 import json
 import ssl
@@ -54,7 +54,8 @@ def create_customer(line):
     # create latitude and longitude
     parms = dict()
     parms['address'] = address
-    parms['key'] = 'AIzaSyCAVSYe2kC818V-7jnRlgLs1CE3QTxTB6k'
+    key = os.environ['GEO_KEY']
+    parms['key'] = key
     url = 'https://maps.googleapis.com/maps/api/geocode/json?' + \
         urllib.parse.urlencode(parms)
     print(url)
