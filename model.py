@@ -37,6 +37,7 @@ class Customer(db.Model):
     state = db.Column(db.String)
     zipcode = db.Column(db.String)
     country = db.Column(db.String)
+    address = db.Column(db.String)
 
     user = db.relationship('User', back_populates='customer')
     order = db.relationship('Order', back_populates='customer')
