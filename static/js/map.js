@@ -22,9 +22,14 @@ function initMap() {
                     map: map,
                 });
 
+                // Content inside info window
+                let contentString = `<div>Name: ${order.fname} ${order.lname}</div>
+                                    <div>Location: ${order.city}, ${order.country}</div>
+                                    <div>Order Total: $${order.total}</div>`
+
                 // Create info window
                 const infowindow = new google.maps.InfoWindow({
-                    content: 'contentString',
+                    content: contentString,
                 });
 
                 // Create event listener

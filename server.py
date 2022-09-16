@@ -1,6 +1,6 @@
 """Server for running app."""
 
-
+from datetime import datetime
 from flask import Flask, render_template, redirect, request, flash, session, jsonify
 from model import db, connect_to_db, User, Customer, Order
 
@@ -92,6 +92,8 @@ def shop_info():
             'customer_id': order.customer.customer_id,
             'fname': order.customer.fname,
             'lname': order.customer.lname,
+            'city': order.customer.city,
+            'country': order.customer.country,
             'address': order.customer.address,
             'latitude': order.customer.latitude,
             'longitude': order.customer.longitude,

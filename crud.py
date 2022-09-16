@@ -1,5 +1,6 @@
 """CRUD operations."""
 
+
 import csv
 from flask import session
 from model import User, Customer, Order, connect_to_db
