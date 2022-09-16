@@ -3,6 +3,19 @@
 import csv
 from flask import session
 from model import User, Customer, Order, connect_to_db, db
+import time
+
+import json
+import ssl
+
+import urllib.request
+import urllib.parse
+import urllib.error
+
+
+ctx = ssl.create_default_context()
+ctx.check_hostname = False
+ctx.verify_mode = ssl.CERT_NONE
 
 
 def create_user(email, password):
@@ -26,19 +39,40 @@ def create_customer(line):
 
     user_id = session['user_id']
 
+    # create address
     address_components = ['Street 1', 'Street 2', 'Ship City',
                           'Ship State', 'Ship Zipcode', 'Ship Country']
 
-    add = ''
+    address = ''
 
     for comp in address_components:
         if comp == 'Ship Country':
-            add += line[comp]
-        else:
-            add += f'{line[comp]}, '
+            address += line[comp]
+        elif line[comp] != '':
+            address += f'{line[comp]}, '
 
+    # create latitude and longitude
+    parms = dict()
+    parms['address'] = address
+    parms['key'] = 'AIzaSyCAVSYe2kC818V-7jnRlgLs1CE3QTxTB6k'
+    url = 'https://maps.googleapis.com/maps/api/geocode/json?' + \
+        urllib.parse.urlencode(parms)
+    print(url)
+
+    uh = urllib.request.urlopen(url, context=ctx)
+    data = uh.read().decode()
+
+    js = json.loads(data)
+
+    if js['status'] != 'OK':
+        print(f'js["status"]')
+
+    lat = js['results'][0]['geometry']['location']['lat']
+    lng = js['results'][0]['geometry']['location']['lng']
+
+    # create instance
     customer = Customer(user_id=user_id, fname=line['First Name'], lname=line['Last Name'], street=line['Street 1'], street2=line['Street 2'],
-                        city=line['Ship City'], state=line['Ship State'], zipcode=line['Ship Zipcode'], country=line['Ship Country'], address=add)
+                        city=line['Ship City'], state=line['Ship State'], zipcode=line['Ship Zipcode'], country=line['Ship Country'], address=address, latitude=lat, longitude=lng)
 
     return customer
 
@@ -61,22 +95,6 @@ def create_order(line):
                   total=line['Order Total'], net=line['Order Net'])
 
     return order
-
-
-def get_location(customer_id):
-
-    customer = Customer.query.filter(
-        Customer.customer_id == customer_id).first()
-    city = customer.city
-    state = customer.state
-    country = customer.country
-
-    if state:
-        location = city
-    else:
-        location = country
-
-    return location
 
 
 if __name__ == "__main__":

@@ -38,6 +38,8 @@ class Customer(db.Model):
     zipcode = db.Column(db.String)
     country = db.Column(db.String)
     address = db.Column(db.String)
+    latitude = db.Column(db.Float)
+    longitude = db.Column(db.Float)
 
     user = db.relationship('User', back_populates='customer')
     order = db.relationship('Order', back_populates='customer')

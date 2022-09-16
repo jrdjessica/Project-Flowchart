@@ -13,18 +13,13 @@ function initMap() {
     fetch('/api/shop')
         .then(res => res.json())
         .then(orders => {
-            for (let i in orders) {
-                const address_comps = ['street', 'street2', 'city', 'state', 'zipcode', 'country'];
-                let address = '';
-                for (const comp of address_comps) {
-                    if (orders[i][comp] != '') {
-                        address += orders[i][comp];
-                        if (comp != 'country') {
-                            address += ', '
-                        }
-                    }
-                }
-                codeAddress(address, map)
+            for (let order of orders) {
+                lat = order.latitude
+                lng = order.longitude
+                // console.log(lat)
+                // console.log(lng)
+                console.log(typeof lat)
+                addMarker({ lat: lat, lng: lng }, map)
             }
         }
         )
@@ -41,18 +36,17 @@ function addMarker(location, map) {
 
 
 // Takes in address, returns lat and lng, add to map
-function codeAddress(address, map) {
-    geocoder.geocode({ 'address': address }, function (results, status) {
+// function codeAddress(address, map) {
+//     geocoder.geocode({ 'address': address }, function (results, status) {
 
-        if (status == 'OK') {
-            let latitude = results[0].geometry.location.lat();
-            let longitude = results[0].geometry.location.lng();
+//         if (status == 'OK') {
+//             let latitude = results[0].geometry.location.lat();
+//             let longitude = results[0].geometry.location.lng();
 
-            addMarker({ lat: latitude, lng: longitude }, map);
+//             addMarker({ lat: latitude, lng: longitude }, map);
 
-        } else {
-            alert(`Address was unsuccessful. ${address} ${status}`);
-        }
-    });
-}
-
+//         } else {
+//             alert(`Address was unsuccessful. ${address} ${status}`);
+//         }
+//     });
+// }
