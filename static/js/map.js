@@ -1,5 +1,5 @@
+'use strict';
 
-// Initialize map, starts in US
 function initMap() {
 
     const start = { lat: 39.828, lng: -98.579 };
@@ -13,39 +13,30 @@ function initMap() {
         .then(res => res.json())
         .then(orders => {
             for (let order of orders) {
-                lat = order.latitude;
-                lng = order.longitude;
+                let lat = order.latitude;
+                let lng = order.longitude;
 
-                addMarker({ lat: lat, lng: lng }, map);
-                // addInfoWindow(map);
-                // console.log(order)
+                // Create marker
+                const marker = new google.maps.Marker({
+                    position: { lat: lat, lng: lng },
+                    map: map,
+                });
+
+                // Create info window
+                const infowindow = new google.maps.InfoWindow({
+                    content: 'contentString',
+                });
+
+                // Create event listener
+                marker.addListener("click", () => {
+                    infowindow.open({
+                        map: map,
+                        anchor: marker,
+                    });
+                });
             }
         }
         )
-}
-
-
-// Add markers to map
-function addMarker(location, map) {
-    const marker = new google.maps.Marker({
-        position: location,
-        map: map,
-    });
-    addInfoWindow(marker, map)
-}
-
-// Add info window
-function addInfoWindow(marker, map) {
-    const infowindow = new google.maps.InfoWindow({
-        content: 'contentString',
-    });
-
-    marker.addListener("click", () => {
-        infowindow.open({
-            map: map,
-            anchor: marker,
-        });
-    });
 }
 
 
