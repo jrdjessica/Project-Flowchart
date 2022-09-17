@@ -3,6 +3,7 @@
 {% block title %}Dashboard{% endblock %}
 {% block head %}
 <link rel="stylesheet" type="text/css" href="static/css/style.css" />
+<script src="https://www.gstatic.com/charts/loader.js"></script>
 {% endblock %}
 
 {% block body %}
@@ -11,12 +12,18 @@
 
 <body>
     <h1>Map</h1>
+    <div id="linechart_material" style="width: 900px; height: 500px"></div>
     <div id="map"></div>
-    <script src="/static/js/map.js"></script>
-    <script async
+    <div id="myPieChart" />
+
+
+    <!-- <script src="/static/js/map.js"></script> -->
+    <script src="/static/js/lineChart.js"></script>
+
+    <!-- <script async
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxnBOchJLt71xt3TtHKGfTlJQvsmyrWQQ&callback=initMap&v=weekly"
         defer>
-        </script>
+        </script> -->
 </body>
 
 {% endblock body %}

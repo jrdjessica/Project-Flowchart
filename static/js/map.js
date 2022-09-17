@@ -5,7 +5,7 @@ function initMap() {
     const start = { lat: 39.828, lng: -98.579 };
 
     const map = new google.maps.Map(document.querySelector('#map'), {
-        zoom: 1,
+        zoom: 3,
         center: start,
     });
 
@@ -43,8 +43,6 @@ function initMap() {
         }
         )
 }
-
-
 
 
 // Maps javascript api - geocoding
