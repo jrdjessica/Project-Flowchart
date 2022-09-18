@@ -5,6 +5,19 @@ google.charts.setOnLoadCallback(drawChart);
 
 function drawChart() {
 
+    var data = new google.visualization.DataTable();
+
+    fetch('/api/shop')
+        .then(res => res.json())
+        .then(orders => {
+            for (let order of orders) {
+                console.log(order.date);
+                console.log(order.total);
+                console.log(order.net);
+            }
+        }
+        )
+
     // x axis: date, y axis: net and total
     data.addColumn('number', 'Day');
     data.addColumn('number', 'Guardians of the Galaxy');
