@@ -16,18 +16,21 @@ function drawChart() {
             // data.addColumn('number', 'Net Total');
 
             let total = 0;
-            for (let order of orders) {
+            console.log(orders.length)
+
+            // Reverse loop through array for correct date order
+            for (let i = orders.length; i >= 0; i--) {
                 // console.log(order.date);
                 // console.log(order.total);
                 // console.log(order.net);
-                console.log(order);
+                console.log(orders[i]);
 
-                total += order.total;
+                // total += order.total;
                 // console.log(total);
 
-                data.addRows([
-                    [new Date(order.date), total],
-                ]);
+                // data.addRows([
+                //     [new Date(order.date), total],
+                // ]);
             }
 
         }
