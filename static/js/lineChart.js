@@ -18,7 +18,9 @@ function drawChart() {
         }
         )
 
-    // x axis: date, y axis: net and total
+    // x axis: date
+    // y axis: order net
+    // y axis: order total
     data.addColumn('number', 'Day');
     data.addColumn('number', 'Guardians of the Galaxy');
     data.addColumn('number', 'The Avengers');
@@ -44,13 +46,12 @@ function drawChart() {
     var options = {
         chart: {
             title: 'Order Total vs Net',
-            subtitle: 'in millions of dollars (USD)'
         },
         width: 900,
         height: 500
     };
 
-    var chart = new google.charts.Line(document.getElementById('linechart_material'));
+    var chart = new google.charts.Line(document.querySelector('#linechart_material'));
 
     chart.draw(data, google.charts.Line.convertOptions(options));
 }
