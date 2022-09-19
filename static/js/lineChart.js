@@ -11,27 +11,34 @@ function drawChart() {
         .then(res => res.json())
         .then(orders => {
 
-            data.addColumn('datetime', 'Day');
-            data.addColumn('number', 'Order Total');
+            // data.addColumn('datetime', 'Day');
+            // data.addColumn('number', 'Order Total');
             // data.addColumn('number', 'Net Total');
 
+            // data.addRows([
+            //     [new Date(orders[i].date), total],
+            // ]);
+
+            // data.addRows([
+            //     [new Date(date), total],
+            // ]);
+
+            let rows = [];
+
             let total = 0;
-            console.log(orders.length)
 
             // Reverse loop through array for correct date order
-            for (let i = orders.length; i >= 0; i--) {
-                // console.log(order.date);
-                // console.log(order.total);
-                // console.log(order.net);
-                console.log(orders[i]);
+            for (let i = orders.length - 1; i >= 0; i--) {
+                total += orders[i].total;
+                console.log(total);
 
-                // total += order.total;
-                // console.log(total);
 
-                // data.addRows([
-                //     [new Date(order.date), total],
-                // ]);
+                let date = orders[i].date;
+                // console.log(date);
+                let addRow = [date, total]
+                rows.push(addRow);
             }
+            console.log(rows)
 
         }
         )
