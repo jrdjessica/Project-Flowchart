@@ -51,8 +51,6 @@ def user_login():
 
     user = crud.get_user_by_email(email)
 
-    session['user_id'] = user.user_id
-
     # check if user has an account and if password matches
     if not user or user.password != password:
         flash('Error. Try again.')
