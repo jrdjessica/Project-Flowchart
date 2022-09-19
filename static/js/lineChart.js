@@ -4,17 +4,16 @@ google.charts.load('current', { 'packages': ['line'] });
 google.charts.setOnLoadCallback(drawChart);
 
 function drawChart() {
-
-    var data = new google.visualization.DataTable();
-
     fetch('/api/shop')
         .then(res => res.json())
         .then(orders => {
 
-            const dateOrder = [];
-            const netOrder = [];
-            const totalOrder = [];
+            const data = new google.visualization.DataTable();
 
+            // Contains data for chart
+            const chartRow = [];
+
+            // Initialize net and total
             let net_total = 0;
             let order_total = 0;
 
@@ -23,34 +22,32 @@ function drawChart() {
                 order_total += orders[i].total;
                 net_total += orders[i].net;
 
-                dateOrder.push(orders[i].date);
-                totalOrder.push(order_total);
-                netOrder.push(net_total);
+                let addRow = [new Date(orders[i].date), net_total, order_total];
 
+                chartRow.push(addRow);
             }
 
+            data.addColumn('datetime', 'Time');
+            data.addColumn('number', 'Net Order in Dollars');
+            data.addColumn('number', 'Total Order in Dollars');
 
-            // data.addColumn('datetime', 'Day');
-            // data.addColumn('number', 'Order Total');
-            // data.addColumn('number', 'Net Total');
+            for (let row of chartRow) {
+                data.addRows([
+                    row
+                ]);
+            }
 
-            // data.addRows([
-            //     [new Date(date), total],
-            // ]);
+            var options = {
+                chart: {
+                    title: 'Net Order vs Total Order',
+                },
+                width: 900,
+                height: 500
+            };
 
+            var chart = new google.charts.Line(document.querySelector('#linechart_material'));
 
+            chart.draw(data, google.charts.Line.convertOptions(options));
         }
         )
-
-    var options = {
-        chart: {
-            title: 'Order Total vs Net',
-        },
-        width: 900,
-        height: 500
-    };
-
-    var chart = new google.charts.Line(document.querySelector('#linechart_material'));
-
-    chart.draw(data, google.charts.Line.convertOptions(options));
 }
