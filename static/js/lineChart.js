@@ -36,6 +36,8 @@ function drawChart() {
                     row
                 ]);
             }
+            console.log(orders);
+            console.log(chartRow);
 
             var options = {
                 chart: {

@@ -56,6 +56,7 @@ def user_login():
         flash('Error. Try again.')
         return redirect('/')
     else:
+        session['user_id'] = user.user_id
         flash('You are logged in.')
         return render_template('upload.html')
 
