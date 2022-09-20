@@ -7,7 +7,7 @@ function drawChart() {
     fetch('/api/shop')
         .then(res => res.json())
         .then(orders => {
-
+            // Create chart
             const data = new google.visualization.DataTable();
 
             // Contains data for chart
@@ -20,7 +20,7 @@ function drawChart() {
             // Sort orders by date
             const sortedOrder = orders.sort((a, b) => new Date(a.date) - new Date(b.date));
 
-            // Reverse loop through array for correct date order
+            // Loop through orders to create rows with date, net, and total
             for (let i = 0; i < sortedOrder.length; i++) {
                 order_total += sortedOrder[i].total;
                 net_total += sortedOrder[i].net;
@@ -30,12 +30,12 @@ function drawChart() {
                 chartRow.push(addRow);
             }
 
-
+            // Add columns to chart
             data.addColumn('datetime', 'Time');
             data.addColumn('number', 'Net Order in Dollars');
             data.addColumn('number', 'Total Order in Dollars');
 
-
+            // Add rows to chart
             for (let row of chartRow) {
                 data.addRows([
                     row
