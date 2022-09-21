@@ -52,7 +52,7 @@ function drawChart() {
             var chart = new google.visualization.Calendar(document.querySelector('#calendar_basic'));
 
             var options = {
-                title: "Red Sox Attendance",
+                title: "Items Purchased",
                 height: 350,
             };
 
