@@ -20,20 +20,23 @@ function drawChart() {
                 for (let row of chartRows) {
 
                     let lastItem = chartRows[chartRows.length - 1];
+
                     if (row['dateValue'] == new Date(orders[i].date).getTime()) {
                         row['numItems'] += orders[i].num_items;
-                        console.log(i);
+                        // console.log(i);
+                        // console.log(row['dateValue']);
+                        // console.log(new Date(orders[29].date).getTime());
                         break
                     }
                     else if (row == lastItem) {
-                        let addRow = { date: new Date(orders[i].date), dateValue: new Date(orders[i].date).getTime(), numItems: orders[i].num_items };
+                        let addRow = { date: orders[i].date, dateValue: new Date(orders[i].date).getTime(), numItems: orders[i].num_items };
                         chartRows.push(addRow);
-                        console.log('hi')
+                        // console.log('hi')
                         break
                     }
                 }
-                console.log('****');
-                // let addRow = { date: new Date(orders[i].date), dateValue: new Date(orders[i].date).getTime(), numItems: orders[i].num_items };
+                // console.log('****');
+                // let addRow = { date: orders[i].date, dateValue: new Date(orders[i].date).getTime(), numItems: orders[i].num_items };
                 // chartRows.push(addRow);
                 // console.log(chartRows);
                 // console.log(i);
