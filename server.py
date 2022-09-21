@@ -72,7 +72,7 @@ def upload_file():
         return redirect('/dashboard')
 
     else:
-        flash('Error.')
+        flash('Error')
 
 
 @app.route('/dashboard')

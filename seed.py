@@ -11,10 +11,13 @@ import crud
 def get_orders(file):
     """Reads csv and loads data into database."""
 
-    filename = secure_filename(file.filename)
-    file.save(os.path.join('input', filename))
+    user_id = session['user_id']
 
-    with open(f'input/{filename}', 'r') as csvfile:
+    filename = secure_filename(file.filename)
+    os.makedirs(f'input/{user_id}/')
+    file.save(os.path.join(f'input/{user_id}/', filename))
+
+    with open(f'input/{user_id}/{filename}', 'r') as csvfile:
         csv_read = csv.DictReader(csvfile)
 
         for line in csv_read:
