@@ -8,14 +8,17 @@ function drawChart() {
         .then(res => res.json())
         .then(orders => {
 
+            // Create table
             var dataTable = new google.visualization.DataTable();
 
+            // Contain row data
             const chartRows = [];
 
             // Add first item in orders to chartRows
             let addRow = { date: new Date(orders[0].date), dateValue: new Date(orders[0].date).getTime(), numItems: orders[0].num_items };
             chartRows.push(addRow);
 
+            // Add data to chartRows
             for (let i = 1; i < orders.length; i++) {
                 for (let row of chartRows) {
 
@@ -33,30 +36,19 @@ function drawChart() {
                 }
 
             }
-            console.log(chartRows);
 
+            // Create columns
             dataTable.addColumn({ type: 'date', id: 'Date' });
             dataTable.addColumn({ type: 'number', id: 'Won/Loss' });
 
-
-            // console.log(chartRows);
-
+            // Create row
             for (let row of chartRows) {
                 dataTable.addRows([
                     [row['date'], row['numItems']]
                 ]);
             }
-            // let addrow = [];
-            // for (let row of chartRows) {
 
-            //     let rows = [row['date'], row['numItems']];
-            //     addrow.push(rows);
-
-
-            // }
-            // console.log(addrow);
-
-
+            // Element from DOM
             var chart = new google.visualization.Calendar(document.querySelector('#calendar_basic'));
 
             var options = {
