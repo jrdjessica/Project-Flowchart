@@ -14,15 +14,17 @@ def get_orders(file):
 
     user_id = session['user_id']
 
+    # Isolate file name
     filename = secure_filename(file.filename)
 
     # Create user input folder if it does not exist
-
     if not os.path.exists(f'input/{user_id}/'):
         os.makedirs(f'input/{user_id}/')
 
+    # Path to user file
     path = f'input/{user_id}/{filename}'
 
+    # If file does not exist, save and add to database
     if not os.path.exists(path):
         file.save(os.path.join(f'input/{user_id}/', filename))
 
