@@ -73,8 +73,8 @@ def create_customer(line):
     lng = js['results'][0]['geometry']['location']['lng']
 
     # create instance
-    customer = Customer(user_id=user_id, fname=line['First Name'], lname=line['Last Name'], street=line['Street 1'], street2=line['Street 2'],
-                        city=line['Ship City'], state=line['Ship State'], zipcode=line['Ship Zipcode'], country=line['Ship Country'], address=address, latitude=lat, longitude=lng)
+    customer = Customer(user_id=user_id, fname=line['First Name'].title(), lname=line['Last Name'].title(), street=line['Street 1'], street2=line['Street 2'],
+                        city=line['Ship City'].title(), state=line['Ship State'], zipcode=line['Ship Zipcode'], country=line['Ship Country'], address=address, latitude=lat, longitude=lng)
 
     return customer
 

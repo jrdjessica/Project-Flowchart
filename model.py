@@ -75,8 +75,10 @@ def example_data():
     user2 = User(email='email2@test.com', password='test')
 
     customers = [
-        Customer(user=user1, fname='Joe', state='CA'),
-        Customer(user=user1, fname='Jane', state='OR'),
+        Customer(user=user1, fname='JOE', lname='BYE',
+                 city='NEW YORK', state='CA'),
+        Customer(user=user1, fname='Jane', lname='BARB',
+                 city='santa ANA', state='OR'),
         Customer(user=user2, fname='Barbie', state='CA'),
         Customer(user=user2, fname='Bill', state='WA'),
     ]
