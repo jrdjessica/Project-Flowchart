@@ -2,7 +2,7 @@
 
 from datetime import datetime
 from flask import Flask, render_template, redirect, request, flash, session, jsonify
-from model import db, connect_to_db, User, Customer, Order
+from model import db, connect_to_db, Order
 from werkzeug.utils import secure_filename
 
 import crud
@@ -77,7 +77,7 @@ def upload_file():
 
     if file_type == 'csv':
         seed.get_orders(file, filename)
-        flash('Upload successful')
+        flash('Success')
         return redirect('/dashboard')
     elif file_type != 'csv':
         flash('Error. Incorrect file type')

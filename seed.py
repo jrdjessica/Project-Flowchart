@@ -1,11 +1,8 @@
 from model import connect_to_db, db
 from flask import session
 
-
-# from werkzeug.utils import secure_filename
 import csv
 import os
-import pathlib
 import crud
 
 
@@ -13,9 +10,6 @@ def get_orders(file, filename):
     """Reads csv and loads data into database."""
 
     user_id = session['user_id']
-
-    # Isolate file name
-    # filename = secure_filename(file.filename)
 
     # Create user input folder if it does not exist
     if not os.path.exists(f'input/{user_id}/'):
@@ -29,6 +23,7 @@ def get_orders(file, filename):
         file.save(os.path.join(f'input/{user_id}/', filename))
 
         with open(f'input/{user_id}/{filename}', 'r') as csvfile:
+
             csv_read = csv.DictReader(csvfile)
 
             for line in csv_read:
