@@ -3,6 +3,7 @@
 from datetime import datetime
 from flask import Flask, render_template, redirect, request, flash, session, jsonify
 from model import db, connect_to_db, User, Customer, Order
+from werkzeug.utils import secure_filename
 
 import crud
 import seed
@@ -67,12 +68,16 @@ def upload_file():
 
     file = request.files['file']
 
-    if file:
-        seed.get_orders(file)
-        return redirect('/dashboard')
+    filename = secure_filename(file.filename)
 
+    # if file:
+    if filename.split('.')[1].lower() == 'csv':
+        seed.get_orders(file)
+        flash('Upload successful')
+        return redirect('/dashboard')
     else:
         flash('Error')
+        return render_template('upload.html')
 
 
 @app.route('/dashboard')
