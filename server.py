@@ -68,13 +68,20 @@ def upload_file():
 
     file = request.files['file']
 
-    filename = secure_filename(file.filename)
+    if file:
+        filename = secure_filename(file.filename)
+        file_type = filename.split('.')[1].lower()
+    else:
+        flash('Error. No selected file')
+        return render_template('upload.html')
 
-    # if file:
-    if filename.split('.')[1].lower() == 'csv':
-        seed.get_orders(file)
+    if file_type == 'csv':
+        seed.get_orders(file, filename)
         flash('Upload successful')
         return redirect('/dashboard')
+    elif file_type != 'csv':
+        flash('Error. Incorrect file type')
+        return render_template('upload.html')
     else:
         flash('Error')
         return render_template('upload.html')
