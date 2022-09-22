@@ -5,6 +5,7 @@ from flask import session
 from werkzeug.utils import secure_filename
 import csv
 import os
+import pathlib
 import crud
 
 
@@ -14,24 +15,32 @@ def get_orders(file):
     user_id = session['user_id']
 
     filename = secure_filename(file.filename)
-    os.makedirs(f'input/{user_id}/')
-    file.save(os.path.join(f'input/{user_id}/', filename))
 
-    with open(f'input/{user_id}/{filename}', 'r') as csvfile:
-        csv_read = csv.DictReader(csvfile)
+    # Create user input folder if it does not exist
 
-        for line in csv_read:
-            customer = crud.create_customer(line)
+    if not os.path.exists(f'input/{user_id}/'):
+        os.makedirs(f'input/{user_id}/')
 
-            db.session.add(customer)
-            db.session.commit()
+    path = f'input/{user_id}/{filename}'
 
-            session['customer_id'] = customer.customer_id
+    if not os.path.exists(path):
+        file.save(os.path.join(f'input/{user_id}/', filename))
 
-            order = crud.create_order(line)
+        with open(f'input/{user_id}/{filename}', 'r') as csvfile:
+            csv_read = csv.DictReader(csvfile)
 
-            db.session.add(order)
-            db.session.commit()
+            for line in csv_read:
+                customer = crud.create_customer(line)
+
+                db.session.add(customer)
+                db.session.commit()
+
+                session['customer_id'] = customer.customer_id
+
+                order = crud.create_order(line)
+
+                db.session.add(order)
+                db.session.commit()
 
 
 if __name__ == "__main__":
