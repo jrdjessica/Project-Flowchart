@@ -13,34 +13,49 @@ function drawChart() {
             let rowCountry = [[orders[0].country, 'Global', 0]];
 
             // Add state parent ['CA', 'United States', 11]
-            let rowState = [];
+            let rowState = [[orders[0].state, orders[0].country, 0]];
 
             // Add city ['Millcreek', 'UT', 1]
             let rowCity = [];
 
             for (let order of orders) {
-                // let addRowState = [order.state, order.country, 0];
                 // let addRowCity = [order.city, order.state, order.num_items];
+
+                let lastItem = rowCountry[rowCountry.length - 1];
 
                 // Add unique country parent row
                 for (let row of rowCountry) {
                     let addRowCountry = [order.country, 'Global', 0];
-                    let lastItem = rowCountry[rowCountry.length - 1];
-                    if (JSON.stringify(row) == JSON.stringify(addRowCountry)) {
+
+                    if (JSON.stringify(row) === JSON.stringify(addRowCountry)) {
                         break
                     }
-                    else if (row == lastItem) {
+                    else if (row === lastItem) {
                         rowCountry.push(addRowCountry);
                     }
                 }
 
+                for (let row of rowState) {
+                    let addRowState = [order.state, order.country, order.num_items];
 
-                // rowCharts.push(addRowState);
-                // rowCharts.push(addRowCity);
+                    if (row[0] == order.state) {
+                        row[2] += order.num_items;
+                        break
+                    }
+                    else if (row == rowState[rowState.length - 1]) {
+                        rowState.push(addRowState);
+                        break
+                    }
+
+                }
+                // console.log([order.state, order.country, order.num_items]);
+
+
             }
             // console.log(rowCharts);
 
             console.log(rowCountry);
+            console.log(rowState);
 
 
             const data = google.visualization.arrayToDataTable([
