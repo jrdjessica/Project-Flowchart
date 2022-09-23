@@ -8,19 +8,19 @@ function drawChart() {
         .then(res => res.json())
         .then(orders => {
 
-            // Add country parent ['United States', 'Global', 0]
+            // Country parent data['United States', 'Global', 0]
             let rowCountry = [[orders[0].country, 'Global', 0]];
 
-            // Add state parent ['CA', 'United States', 11]
+            // State parent data ['CA', 'United States', 11]
             let rowState = [[orders[0].state, orders[0].country, 0]];
 
-            // Add city ['Millcreek', 'UT', 1]
+            // City parent data['Millcreek', 'UT', 1]
             let rowCity = [[orders[0].city, orders[0].state, 0]];
 
 
             for (let order of orders) {
 
-                // Add unique country parent row
+                // Add country parent row
                 for (let row of rowCountry) {
                     let addRowCountry = [order.country, 'Global', 0];
 
@@ -33,6 +33,7 @@ function drawChart() {
                     }
                 }
 
+                // Add state parent row
                 for (let row of rowState) {
                     let addRowState = [order.state, order.country, order.num_items];
 
@@ -50,6 +51,7 @@ function drawChart() {
                     }
                 }
 
+                // Add city parent row
                 for (let row of rowCity) {
                     let addRowCity = [order.city, order.state, order.num_items];
                     if (row[0] == order.city) {
@@ -64,13 +66,15 @@ function drawChart() {
 
             }
 
-            console.log(rowState);
+            // Create chart
             const data = new google.visualization.DataTable();
 
+            // Add column
             data.addColumn('string', 'Location');
             data.addColumn('string', 'Parent');
             data.addColumn('number', 'Num Orders');
 
+            // Add row
             for (let row of rowCountry) {
                 data.addRows([
                     ['Global', null, 0],
@@ -91,8 +95,10 @@ function drawChart() {
             }
 
 
+            // Element from DOM
             const tree = new google.visualization.TreeMap(document.querySelector('#treemap'));
 
+            // Chart options
             tree.draw(data, {
                 minColor: '#f00',
                 midColor: '#ddd',
