@@ -16,10 +16,13 @@ function drawChart() {
             let rowState = [[orders[0].state, orders[0].country, 0]];
 
             // Add city ['Millcreek', 'UT', 1]
-            let rowCity = [];
+            let rowCity = [[orders[0].city, orders[0].state, 0]];
+
 
             for (let order of orders) {
+                // console.log(order.country);
                 // let addRowCity = [order.city, order.state, order.num_items];
+
 
                 let lastItem = rowCountry[rowCountry.length - 1];
 
@@ -39,6 +42,10 @@ function drawChart() {
                 for (let row of rowState) {
                     let addRowState = [order.state, order.country, order.num_items];
 
+                    if (order.state == '') {
+                        order.state = 'Unknown';
+                    }
+
                     if (row[0] == order.state) {
                         row[2] += order.num_items;
                         break
@@ -49,10 +56,19 @@ function drawChart() {
                     }
 
 
-                    // for (let row of rowState) {
-                    //     let addRowCity = [order.city, order.state, order.num_items];
-
-                    // }
+                    for (let row of rowCity) {
+                        let addRowCity = [order.city, order.state, order.num_items];
+                        if (row[0] == order.city) {
+                            row[2] += order.num_items;
+                            // console.log(order.city);
+                            break
+                        }
+                        else if (row == rowCity[rowCity.length - 1]) {
+                            rowCity.push(addRowCity);
+                            // console.log(order.city);
+                            break
+                        }
+                    }
 
                 }
                 // console.log([order.state, order.country, order.num_items]);
@@ -61,12 +77,13 @@ function drawChart() {
             }
             // console.log(rowCharts);
 
-            console.log(rowCountry);
+            // console.log(rowCountry);
             console.log(rowState);
+            // console.log(rowCity);
 
             rowCharts.push(rowCountry);
             rowCharts.push(rowState);
-            console.log(rowCharts);
+            // console.log(rowCharts);
 
 
 
@@ -88,6 +105,13 @@ function drawChart() {
                     row
                 ]);
             }
+
+            // data.addRows([
+            //     ['', 'The Netherlands', 11]
+            // ]);
+
+
+
 
             // const data = google.visualization.arrayToDataTable([
 
