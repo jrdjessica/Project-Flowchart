@@ -7,9 +7,42 @@ function drawChart() {
     fetch('/api/shop')
         .then(res => res.json())
         .then(orders => {
-            console.log(orders.city);
-            console.log(orders.state);
-            console.log(orders.country);
+            let rowCharts = [];
+
+            // Add country parent ['United States', 'Global', 0]
+            let rowCountry = [[orders[0].country, 'Global', 0]];
+
+            // Add state parent ['CA', 'United States', 11]
+            let rowState = [];
+
+            // Add city ['Millcreek', 'UT', 1]
+            let rowCity = [];
+
+            for (let order of orders) {
+                // let addRowState = [order.state, order.country, 0];
+                // let addRowCity = [order.city, order.state, order.num_items];
+
+                // Add unique country parent row
+                for (let row of rowCountry) {
+                    let addRowCountry = [order.country, 'Global', 0];
+                    let lastItem = rowCountry[rowCountry.length - 1];
+                    if (JSON.stringify(row) == JSON.stringify(addRowCountry)) {
+                        break
+                    }
+                    else if (row == lastItem) {
+                        rowCountry.push(addRowCountry);
+                    }
+                }
+
+
+                // rowCharts.push(addRowState);
+                // rowCharts.push(addRowCity);
+            }
+            // console.log(rowCharts);
+
+            console.log(rowCountry);
+
+
             const data = google.visualization.arrayToDataTable([
 
                 // ['Location', 'Parent', 'num orders']
@@ -17,10 +50,10 @@ function drawChart() {
                 // ['Global', null, 0, 0],
 
                 // country, parent, num orders
-                // ['Brazil', 'Global', 11],
-                // ['United States', 'Global', 52],
-                // ['Mexico', 'Global', 24],
-                // ['Canada', 'Global', 16],
+                // ['Brazil', 'Global', 0],
+                // ['United States', 'Global', 0],
+                // ['Mexico', 'Global', 0],
+                // ['Canada', 'Global', 0],
 
                 // state, country, num orders
                 // ['CA', 'United States', 11],
