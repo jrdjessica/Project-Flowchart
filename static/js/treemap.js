@@ -7,7 +7,9 @@ function drawChart() {
     fetch('/api/shop')
         .then(res => res.json())
         .then(orders => {
-            console.log(orders);
+            console.log(orders.city);
+            console.log(orders.state);
+            console.log(orders.country);
             const data = google.visualization.arrayToDataTable([
 
                 // ['Location', 'Parent', 'num orders']

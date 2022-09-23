@@ -104,6 +104,7 @@ def shop_info():
             'fname': order.customer.fname,
             'lname': order.customer.lname,
             'city': order.customer.city,
+            'state': order.customer.state,
             'country': order.customer.country,
             'address': order.customer.address,
             'latitude': order.customer.latitude,
