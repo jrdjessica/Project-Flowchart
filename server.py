@@ -135,6 +135,13 @@ def show_calendar():
     return render_template('calendar.html')
 
 
+@app.route('/sales')
+def show_sale_orders():
+    """Shows net and total orders."""
+
+    return render_template('sales.html')
+
+
 if __name__ == "__main__":
     connect_to_db(app)
     app.run(debug=True, host="0.0.0.0")

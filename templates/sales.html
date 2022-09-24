@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+{% block head %}
+
+<script src="https://www.gstatic.com/charts/loader.js"></script>
+{% endblock %}
+
+{% block body %}
+
+<body>
+    <h1>Sales</h1>
+
+    <div id="linechart_material" style="width: 900px; height: 500px"></div>
+
+    <script src="/static/js/lineChart.js"></script>
+
+</body>
+
+{% endblock body %}
