@@ -121,6 +121,13 @@ def shop_info():
     return jsonify(orders)
 
 
+@app.route('/map')
+def shop_map():
+    """Shows map and tree map."""
+
+    return render_template('map.html')
+
+
 if __name__ == "__main__":
     connect_to_db(app)
     app.run(debug=True, host="0.0.0.0")
