@@ -59,7 +59,14 @@ def user_login():
     else:
         session['user_id'] = user.user_id
         flash('You are logged in.')
-        return render_template('upload.html')
+        return redirect('/file')
+
+
+@app.route('/file')
+def show_upload_file():
+    """Show page for user to upload file."""
+
+    return render_template('upload.html')
 
 
 @app.route('/upload', methods=['POST'])
@@ -78,20 +85,13 @@ def upload_file():
     if file_type == 'csv':
         seed.get_orders(file, filename)
         flash('Success')
-        return redirect('/dashboard')
+        return redirect('/map')
     elif file_type != 'csv':
         flash('Error. Incorrect file type')
         return render_template('upload.html')
     else:
         flash('Error')
         return render_template('upload.html')
-
-
-@app.route('/dashboard')
-def show_dashboard():
-    """Shows dashboard."""
-
-    return render_template('dashboard.html')
 
 
 @app.route('/api/shop')
