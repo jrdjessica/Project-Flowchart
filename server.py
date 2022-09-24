@@ -122,10 +122,17 @@ def shop_info():
 
 
 @app.route('/map')
-def shop_map():
+def show_map():
     """Shows map and tree map."""
 
     return render_template('map.html')
+
+
+@app.route('/calendar')
+def show_calendar():
+    """Shows calendar heat map."""
+
+    return render_template('calendar.html')
 
 
 if __name__ == "__main__":
