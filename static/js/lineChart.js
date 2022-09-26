@@ -1,12 +1,18 @@
 'use strict';
 
+
 google.charts.load('current', { 'packages': ['line'] });
 google.charts.setOnLoadCallback(drawChart);
 
+
 function drawChart() {
+    fetch('/api/currency')
+        .then((response) => response.json())
+        .then((data) => console.log(data));
     fetch('/api/shop')
         .then(res => res.json())
         .then(orders => {
+            console.log(orders);
             // Create chart
             const data = new google.visualization.DataTable();
 

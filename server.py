@@ -7,6 +7,8 @@ from werkzeug.utils import secure_filename
 
 import crud
 import seed
+import os
+import requests
 
 
 from jinja2 import StrictUndefined
@@ -96,7 +98,7 @@ def upload_file():
 
 @app.route('/api/shop')
 def shop_info():
-    """Returns JSON of shop data."""
+    """Return JSON of shop data."""
 
     orders = [
         {
@@ -123,21 +125,33 @@ def shop_info():
 
 @app.route('/map')
 def show_map():
-    """Shows map and tree map."""
+    """Show map and tree map."""
 
     return render_template('map.html')
 
 
 @app.route('/calendar')
 def show_calendar():
-    """Shows calendar heat map."""
+    """Show calendar heat map."""
 
     return render_template('calendar.html')
 
 
+@app.route('/api/currency')
+def show_currency_converter():
+    """Return currency converter."""
+
+    key = os.environ['CUR_KEY']
+    url = f'https://v6.exchangerate-api.com/v6/{key}/latest/USD'
+
+    resp = requests.get(url)
+
+    return resp.json()
+
+
 @app.route('/sales')
 def show_sale_orders():
-    """Shows net and total orders."""
+    """Show net and total orders."""
 
     return render_template('sales.html')
 
