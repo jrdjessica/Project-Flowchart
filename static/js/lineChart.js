@@ -6,9 +6,11 @@ google.charts.setOnLoadCallback(drawChart);
 
 
 function drawChart() {
-    fetch('/api/currency')
-        .then((response) => response.json())
-        .then((data) => console.log(data));
+    // fetch('/api/currency')
+    //     .then((response) => response.json())
+    //     .then((data) => console.log(data));
+
+    document.querySelector('#currency');
     fetch('/api/shop')
         .then(res => res.json())
         .then(orders => {
@@ -56,7 +58,7 @@ function drawChart() {
                 height: 500
             };
 
-            var chart = new google.charts.Line(document.querySelector('#linechart_material'));
+            var chart = new google.charts.Line(document.querySelector('#linechart-material'));
 
             chart.draw(data, google.charts.Line.convertOptions(options));
         }
