@@ -146,17 +146,21 @@ def get_currency_converter_api():
     base_cur = request.form.get('enter-cur')
     convert_cur = request.form.get('convert-cur')
     currency_input = request.form.get('enter-num')
+    round(currency_input, 4)
 
     # url = f'https://v6.exchangerate-api.com/v6/{key}/latest/{base_cur}'
     url = f'https://v6.exchangerate-api.com/v6/{convert_cur}/pair/{base_cur}/{convert_cur}/{currency_input}'
 
     response = requests.get(url)
+    data = response.json()
+
+    result = crud.convert_currency(data)
     print(base_cur)
     print(convert_cur)
     print(currency_input)
     print('******************************************************************')
     # return response.json()
-    return redirect('/sales')
+    return redirect('/sales', result=result)
 
 
 @app.route('/sales')

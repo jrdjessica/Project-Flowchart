@@ -99,6 +99,12 @@ def create_order(line):
     return order
 
 
+def convert_currency(data):
+    """Return converted currency total."""
+
+    return data['conversion_result']
+
+
 if __name__ == "__main__":
     from server import app
 

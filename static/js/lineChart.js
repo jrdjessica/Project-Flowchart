@@ -6,14 +6,14 @@ google.charts.setOnLoadCallback(drawChart);
 
 
 function drawChart() {
-    fetch('/api/currency')
-        .then((response) => response.json())
-        .then((data) => {
-            console.log(data);
-            console.log(data['conversion_rates']);
-            console.log(data['conversion_rates']['AUD']);
-        }
-        );
+    // fetch('/api/currency')
+    //     .then((response) => response.json())
+    //     .then((data) => {
+    //         console.log(data);
+    //         console.log(data['conversion_rates']);
+    //         console.log(data['conversion_rates']['AUD']);
+    //     }
+    //     );
 
 
 
