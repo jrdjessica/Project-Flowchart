@@ -15,10 +15,9 @@
 
     <div>
         <label for="enter-cur"></label>
-
         <form action="/api/currency" method="POST">
             From
-            <input type="number" name="enter-num" id="enter-num">
+            <input type="number" name="enter-num" id="enter-num" step=0.01>
             <select id="enter-cur" name="enter-cur">
                 <option value="AUD">Australian Dollar</option>
                 <option value="CAD">Canadian Dollar</option>

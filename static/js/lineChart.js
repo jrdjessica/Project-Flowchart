@@ -74,7 +74,8 @@ function drawChart() {
                 const selection = chart.getSelection();
                 for (let i = 0; i < selection.length; i++) {
                     const item = selection[i];
-                    const value = data.getValue(item['row'], item['column']);
+                    const value = data.getValue(item['row'], item['column']).toFixed(2);
+                    // const newval = value.toFixed(2);
                     console.log(value);
                     document.querySelector('#enter-num').value = value;
                 }
@@ -84,4 +85,7 @@ function drawChart() {
 
 
         )
+
+    document.querySelector('#output').innerHTML = result;
+    console.log(result);
 }
