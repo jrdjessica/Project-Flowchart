@@ -148,7 +148,7 @@ def get_currency_converter_api():
     currency_input = request.form.get('enter-num')
 
     # url = f'https://v6.exchangerate-api.com/v6/{key}/latest/{base_cur}'
-    url = f'https://v6.exchangerate-api.com/v6/YOUR-API-KEY/pair/EUR/GBP/AMOUNT'
+    url = f'https://v6.exchangerate-api.com/v6/{convert_cur}/pair/{base_cur}/{convert_cur}/{currency_input}'
 
     response = requests.get(url)
     print(base_cur)
