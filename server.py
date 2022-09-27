@@ -139,7 +139,7 @@ def show_calendar():
 
 @app.route('/api/currency', methods=['POST'])
 def get_currency_converter_api():
-    """Request currency converter api."""
+    """Return converted currency."""
 
     key = os.environ['CUR_KEY']
 
@@ -155,11 +155,6 @@ def get_currency_converter_api():
     converted_currency = crud.convert_currency(data)
     result = round(converted_currency, 2)
 
-    print(result)
-    print(base_cur)
-    print(convert_cur)
-    print(currency_input)
-
     return render_template('sales.html', result=result, base_cur=base_cur, convert_cur=convert_cur, currency_input=currency_input)
 
 
@@ -167,7 +162,7 @@ def get_currency_converter_api():
 def show_sale_orders():
     """Show net and total orders."""
 
-    return render_template('sales.html', name='hello')
+    return render_template('sales.html')
 
 
 if __name__ == "__main__":
