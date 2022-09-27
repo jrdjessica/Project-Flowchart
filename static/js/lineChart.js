@@ -19,7 +19,7 @@ function drawChart() {
     fetch('/api/shop')
         .then(res => res.json())
         .then(orders => {
-            console.log(orders);
+
             // Create chart
             const data = new google.visualization.DataTable();
 
@@ -70,7 +70,13 @@ function drawChart() {
             google.visualization.events.addListener(chart, 'select', selectHandler);
 
             function selectHandler(e) {
-                alert('A table row was selected');
+                const selection = chart.getSelection();
+                for (let i = 0; i < selection.length; i++) {
+                    const item = selection[i];
+
+                    const val = data.getValue(item['row'], item['column']);
+                    console.log(val);
+                }
             }
 
         }
