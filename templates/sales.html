@@ -19,6 +19,7 @@
             From
             <input type="number" name="enter-num" id="enter-num" step=0.01>
             <select id="enter-cur" name="enter-cur">
+                <option value="none" selected="selected" disabled hidden>Select a currency</option>
                 <option value="AUD">Australian Dollar</option>
                 <option value="CAD">Canadian Dollar</option>
                 <option value="CNY">Chinese Renminbi</option>
@@ -38,6 +39,7 @@
             </select>
             <div>To
                 <select id="convert-cur" name="convert-cur">
+                    <option value="none" selected="selected" disabled hidden>Select a currency</option>
                     <option value="AUD">Australian Dollar</option>
                     <option value="CAD">Canadian Dollar</option>
                     <option value="CNY">Chinese Renminbi</option>
@@ -57,13 +59,18 @@
                 </select>
             </div>
             <div>
-                Output:
-                <p id="output">{{ result }}</p>
+                <p id="output">
+                    {% if currency_input is defined %}
+                    {{ currency_input }} {{ base_cur }} = {{ result }} {{ convert_cur }}
+                    {% endif %}
+                </p>
             </div>
             <button type="submit">Convert</button>
         </form>
 
     </div>
+
+    <div id="currency-converter"></div>
 
     <div id="linechart-material" style="width: 900px; height: 500px"></div>
 

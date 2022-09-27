@@ -155,21 +155,19 @@ def get_currency_converter_api():
     converted_currency = crud.convert_currency(data)
     result = round(converted_currency, 2)
 
-    session['result'] = result
+    print(result)
+    print(base_cur)
+    print(convert_cur)
+    print(currency_input)
 
-    return redirect('/sales')
+    return render_template('sales.html', result=result, base_cur=base_cur, convert_cur=convert_cur, currency_input=currency_input)
 
 
 @app.route('/sales')
 def show_sale_orders():
     """Show net and total orders."""
 
-    if session['result']:
-        result = session['result']
-    else:
-        result = 0
-
-    return render_template('sales.html', result=result)
+    return render_template('sales.html', name='hello')
 
 
 if __name__ == "__main__":

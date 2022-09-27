@@ -6,17 +6,6 @@ google.charts.setOnLoadCallback(drawChart);
 
 
 function drawChart() {
-    // fetch('/api/currency')
-    //     .then((response) => response.json())
-    //     .then((data) => {
-    //         console.log(data);
-    //         console.log(data['conversion_rates']);
-    //         console.log(data['conversion_rates']['AUD']);
-    //     }
-    //     );
-
-
-
     fetch('/api/shop')
         .then(res => res.json())
         .then(orders => {
@@ -75,7 +64,7 @@ function drawChart() {
                 for (let i = 0; i < selection.length; i++) {
                     const item = selection[i];
                     const value = data.getValue(item['row'], item['column']).toFixed(2);
-                    // const newval = value.toFixed(2);
+
                     console.log(value);
                     document.querySelector('#enter-num').value = value;
                 }
@@ -86,6 +75,4 @@ function drawChart() {
 
         )
 
-    document.querySelector('#output').innerHTML = result;
-    console.log(result);
 }
