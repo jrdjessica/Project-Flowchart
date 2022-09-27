@@ -10,11 +10,7 @@ function drawChart() {
     //     .then((response) => response.json())
     //     .then((data) => console.log(data));
 
-    const button = document.querySelector('#convert');
-    function handleClick() {
 
-    }
-    button.addEventListener('click', handleClick)
 
     fetch('/api/shop')
         .then(res => res.json())
@@ -69,13 +65,20 @@ function drawChart() {
 
             google.visualization.events.addListener(chart, 'select', selectHandler);
 
+
+            // const button = document.querySelector('#convert');
+            // function handleClick() {
+
+            // }
+            // button.addEventListener('click', handleClick)
+
             function selectHandler(e) {
                 const selection = chart.getSelection();
                 for (let i = 0; i < selection.length; i++) {
                     const item = selection[i];
-
-                    const val = data.getValue(item['row'], item['column']);
-                    console.log(val);
+                    const value = data.getValue(item['row'], item['column']);
+                    console.log(value);
+                    document.querySelector('#enter-num').value = value;
                 }
             }
 
