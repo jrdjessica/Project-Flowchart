@@ -10,7 +10,12 @@ function drawChart() {
     //     .then((response) => response.json())
     //     .then((data) => console.log(data));
 
-    document.querySelector('#currency');
+    const button = document.querySelector('#convert');
+    function handleClick() {
+
+    }
+    button.addEventListener('click', handleClick)
+
     fetch('/api/shop')
         .then(res => res.json())
         .then(orders => {
@@ -58,9 +63,18 @@ function drawChart() {
                 height: 500
             };
 
-            var chart = new google.charts.Line(document.querySelector('#linechart-material'));
+            const chart = new google.charts.Line(document.querySelector('#linechart-material'));
 
             chart.draw(data, google.charts.Line.convertOptions(options));
+
+            google.visualization.events.addListener(chart, 'select', selectHandler);
+
+            function selectHandler(e) {
+                alert('A table row was selected');
+            }
+
         }
+
+
         )
 }
