@@ -147,14 +147,14 @@ def get_currency_converter_api():
     convert_cur = request.form.get('convert-cur')
     currency_input = float(request.form.get('enter-num'))
 
-    # url = f'https://v6.exchangerate-api.com/v6/{key}/pair/{base_cur}/{convert_cur}/{currency_input}'
+    url = f'https://v6.exchangerate-api.com/v6/{key}/pair/{base_cur}/{convert_cur}/{currency_input}'
 
-    # response = requests.get(url)
-    # data = response.json()
+    response = requests.get(url)
+    data = response.json()
 
-    # converted_currency = crud.convert_currency(data)
-    # result = round(converted_currency, 2)
-    result = 100.11
+    converted_currency = crud.convert_currency(data)
+    result = round(converted_currency, 2)
+
     session['result'] = result
 
     return redirect('/sales')
