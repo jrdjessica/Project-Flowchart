@@ -147,27 +147,29 @@ def get_currency_converter_api():
     convert_cur = request.form.get('convert-cur')
     currency_input = float(request.form.get('enter-num'))
 
-    # url = f'https://v6.exchangerate-api.com/v6/{key}/latest/{base_cur}'
-    url = f'https://v6.exchangerate-api.com/v6/{key}/pair/{base_cur}/{convert_cur}/{currency_input}'
+    # url = f'https://v6.exchangerate-api.com/v6/{key}/pair/{base_cur}/{convert_cur}/{currency_input}'
 
-    response = requests.get(url)
-    data = response.json()
+    # response = requests.get(url)
+    # data = response.json()
 
-    converted_currency = crud.convert_currency(data)
-    result = round(converted_currency, 2)
+    # converted_currency = crud.convert_currency(data)
+    # result = round(converted_currency, 2)
+    result = 100.11
+    session['result'] = result
 
-    print(result)
-    print('********************************')
-
-    # return response.json()
-    return redirect('/sales', result=result)
+    return redirect('/sales')
 
 
 @app.route('/sales')
 def show_sale_orders():
     """Show net and total orders."""
 
-    return render_template('sales.html')
+    if session['result']:
+        result = session['result']
+    else:
+        result = 0
+
+    return render_template('sales.html', result=result)
 
 
 if __name__ == "__main__":
