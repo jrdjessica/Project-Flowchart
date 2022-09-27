@@ -6,9 +6,14 @@ google.charts.setOnLoadCallback(drawChart);
 
 
 function drawChart() {
-    // fetch('/api/currency')
-    //     .then((response) => response.json())
-    //     .then((data) => console.log(data));
+    fetch('/api/currency')
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+            console.log(data['conversion_rates']);
+            console.log(data['conversion_rates']['AUD']);
+        }
+        );
 
 
 
@@ -64,13 +69,6 @@ function drawChart() {
             chart.draw(data, google.charts.Line.convertOptions(options));
 
             google.visualization.events.addListener(chart, 'select', selectHandler);
-
-
-            // const button = document.querySelector('#convert');
-            // function handleClick() {
-
-            // }
-            // button.addEventListener('click', handleClick)
 
             function selectHandler(e) {
                 const selection = chart.getSelection();

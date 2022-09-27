@@ -13,13 +13,12 @@
 
     <div id="currency">Currency Converter</div>
 
-    <div id="start-cur">
+    <div>
         <label for="enter-cur"></label>
-        <p id="hello"></p>
-        <form>From
+
+        <form action="/api/currency" method="POST">
+            From
             <input type="number" name="enter-num" id="enter-num">
-        </form>
-        <form>
             <select id="enter-cur" name="enter-cur">
                 <option value="AUD">Australian Dollar</option>
                 <option value="CAD">Canadian Dollar</option>
@@ -38,35 +37,33 @@
                 <option value="USD">United States Dollar</option>
                 <option value="UAH">Ukrainian Hryvnia</option>
             </select>
+            <div>To
+                <select id="convert-cur" name="convert-cur">
+                    <option value="AUD">Australian Dollar</option>
+                    <option value="CAD">Canadian Dollar</option>
+                    <option value="CNY">Chinese Renminbi</option>
+                    <option value="EUR">Euro</option>
+                    <option value="ILS">Israeli New Shekel</option>
+                    <option value="INR">Indian Rupee</option>
+                    <option value="JPY">Japanese Yen</option>
+                    <option value="HKD">Hong Kong Dollar</option>
+                    <option value="HUF">Hungarian Forint</option>
+                    <option value="MXN">Mexican Peso</option>
+                    <option value="GBP">Pound Sterling</option>
+                    <option value="RUB">Russian Ruble</option>
+                    <option value="THB">Thai Baht</option>
+                    <option value="TRY">Turkish Lira</option>
+                    <option value="USD">United States Dollar</option>
+                    <option value="UAH">Ukrainian Hryvnia</option>
+                </select>
+            </div>
+            <div>
+                Output:
+                <p id="output"></p>
+            </div>
+            <button type="submit">Convert</button>
         </form>
-    </div>
-    <div id="end-cur">
-        <div>
-            Output
-        </div>
-        <form>To
-            <select id="convert-cur" name="convert-cur">
-                <option value="AUD">Australian Dollar</option>
-                <option value="CAD">Canadian Dollar</option>
-                <option value="CNY">Chinese Renminbi</option>
-                <option value="EUR">Euro</option>
-                <option value="ILS">Israeli New Shekel</option>
-                <option value="INR">Indian Rupee</option>
-                <option value="JPY">Japanese Yen</option>
-                <option value="HKD">Hong Kong Dollar</option>
-                <option value="HUF">Hungarian Forint</option>
-                <option value="MXN">Mexican Peso</option>
-                <option value="GBP">Pound Sterling</option>
-                <option value="RUB">Russian Ruble</option>
-                <option value="THB">Thai Baht</option>
-                <option value="TRY">Turkish Lira</option>
-                <option value="USD">United States Dollar</option>
-                <option value="UAH">Ukrainian Hryvnia</option>
-            </select>
-        </form>
-    </div>
-    <div id="convert">
-        <button>Convert</button>
+
     </div>
 
     <div id="linechart-material" style="width: 900px; height: 500px"></div>

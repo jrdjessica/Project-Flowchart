@@ -137,16 +137,26 @@ def show_calendar():
     return render_template('calendar.html')
 
 
-# @app.route('/api/currency')
-# def get_currency_converter_api():
-#     """Request currency converter api."""
+@app.route('/api/currency', methods=['POST'])
+def get_currency_converter_api():
+    """Request currency converter api."""
 
-#     key = os.environ['CUR_KEY']
-#     url = f'https://v6.exchangerate-api.com/v6/{key}/latest/USD'
+    key = os.environ['CUR_KEY']
 
-#     response = requests.get(url)
+    base_cur = request.form.get('enter-cur')
+    convert_cur = request.form.get('convert-cur')
+    currency_input = request.form.get('enter-num')
 
-#     return response.json()
+    # url = f'https://v6.exchangerate-api.com/v6/{key}/latest/{base_cur}'
+    url = f'https://v6.exchangerate-api.com/v6/YOUR-API-KEY/pair/EUR/GBP/AMOUNT'
+
+    response = requests.get(url)
+    print(base_cur)
+    print(convert_cur)
+    print(currency_input)
+    print('******************************************************************')
+    # return response.json()
+    return redirect('/sales')
 
 
 @app.route('/sales')
