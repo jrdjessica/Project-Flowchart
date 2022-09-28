@@ -9,6 +9,9 @@ import crud
 import seed
 import os
 import requests
+import matplotlib.pyplot as plt
+from PIL import Image
+from io import BytesIO
 
 
 from jinja2 import StrictUndefined
@@ -165,7 +168,7 @@ def show_sale_orders():
     return render_template('sales.html')
 
 
-@app.route('/inspiration')
+@app.route('/inspiration', methods=['POST'])
 def show_inspiration():
     """Show inspiration."""
 
