@@ -165,6 +165,13 @@ def show_sale_orders():
     return render_template('sales.html')
 
 
+@app.route('/inspiration')
+def show_inspiration():
+    """Show inspiration."""
+
+    return render_template('inspiration.html')
+
+
 if __name__ == "__main__":
     connect_to_db(app)
     app.run(debug=True, host="0.0.0.0")
