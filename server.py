@@ -9,10 +9,6 @@ import crud
 import seed
 import os
 import requests
-import matplotlib.pyplot as plt
-from PIL import Image
-from io import BytesIO
-
 
 from jinja2 import StrictUndefined
 
@@ -105,7 +101,6 @@ def shop_info():
 
     orders = [
         {
-            'customer_id': order.customer.customer_id,
             'fname': order.customer.fname,
             'lname': order.customer.lname,
             'city': order.customer.city,
@@ -114,7 +109,6 @@ def shop_info():
             'address': order.customer.address,
             'latitude': order.customer.latitude,
             'longitude': order.customer.longitude,
-            'order_id': order.order_id,
             'num_items': order.num_items,
             'date': order.date,
             'total': order.total,
