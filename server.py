@@ -120,6 +120,13 @@ def shop_info():
     return jsonify(orders)
 
 
+@app.route('/dashboard')
+def show_dashboard():
+    """Show dashboard."""
+
+    return render_template('dashboard.html')
+
+
 @app.route('/map')
 def show_map():
     """Show map and tree map."""
