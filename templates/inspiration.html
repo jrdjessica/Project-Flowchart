@@ -10,16 +10,18 @@
 <body>
     <h1>Inspiration</h1>
 
-    <form>
-        <label for="search-term">Search: </label>
-        <input type='text' name="search-term" id="search-term">
+    <form action="/api/inspiration">
+        <label for="search">Search: </label>
+        <input type='text' name="search-term" id="search">
         <button type="submit">Submit</button>
     </form>
 
     <div id="inspiration"></div>
-
-
-    <script src="/static/js/inspiration.js"></script>
+    {% if thumbnail_url1 is defined %}
+    <img src="{{ thumbnail_url1 }}" alt="image search result 1">
+    <img src="{{ thumbnail_url2 }}" alt="image search result 2">
+    <img src="{{ thumbnail_url3 }}" alt="image search result 3">
+    {% endif %}
 
 </body>
 
