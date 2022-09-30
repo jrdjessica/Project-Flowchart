@@ -9,6 +9,7 @@ function DashboardContainer() {
     const [endDate, setEndDate] = React.useState();
 
     const [numberDays, setNumberDays] = React.useState();
+    const [countries, setCountries] = React.useState();
 
 
     React.useEffect(() => {
@@ -33,6 +34,7 @@ function DashboardContainer() {
 
                 // Number of countries
                 setNumCountries(countries.size);
+                setCountries(countries);
 
                 // Average order value and total order value
                 let totalValue = 0;
@@ -49,9 +51,13 @@ function DashboardContainer() {
                 setStartDate(firstDate.toDateString());
                 setEndDate(endDate.toDateString());
 
+                setNumberDays((new Date(endDate).getTime() - new Date(startDate).getTime()) / (1000 * 60 * 60 * 24))
             });
     }, []);
 
+    function DisplayInfo(evt, location) {
+        document.querySelector(`#${location}`).innerHTML = Object.values(evt);
+    };
 
     return (
         <div>
@@ -68,15 +74,18 @@ function DashboardContainer() {
             <div>
                 Average order value: {avgValue}
             </div>
+            <div>
+                From {startDate} to {endDate}
+            </div>
 
             <div onMouseEnter={() => setNumberDays((new Date(endDate).getTime() - new Date(startDate).getTime()) / (1000 * 60 * 60 * 24))}
                 onMouseLeave={() => setNumberDays('?')}>
-                From {startDate} to {endDate}
                 <br />
                 This data is for {numberDays} days
             </div>
 
-            <button >Reveal countries</button>
+            <div id='countries'></div>
+            <button type="button" onClick={(evt, location) => DisplayInfo({ countries }, 'countries')}>Reveal countries</button>
         </div>
     )
 }
