@@ -11,6 +11,7 @@ function DashboardContainer() {
     const [numberDays, setNumberDays] = React.useState();
     const [countries, setCountries] = React.useState();
 
+
     function Button() {
         const [showText, setShowText] = React.useState(false);
         const onClick = () => {
@@ -22,13 +23,20 @@ function DashboardContainer() {
         }
         return (
             <div>
-                <button onClick={onClick}>Click me</button>
-                {showText ? <Text /> : null}
+                <button type="button" onClick={onClick}>Reveal countries</button>
+                {showText ? <DisplayInfo evt={countries} /> : null}
             </div>
         );
     }
-    const Text = () => <div>Click</div>;
 
+    function DisplayInfo(props) {
+        console.log(props.evt);
+        return (
+            <div id="country">
+                {props.evt}
+            </div>
+        )
+    };
 
 
     React.useEffect(() => {
@@ -74,9 +82,7 @@ function DashboardContainer() {
             });
     }, []);
 
-    function DisplayInfo(evt, location) {
-        document.querySelector(`#${location}`).innerHTML = Object.values(evt);
-    };
+
 
     return (
         <div>
@@ -103,8 +109,6 @@ function DashboardContainer() {
                 This data is for {numberDays} days
             </div>
 
-            <div id='countries'></div>
-            <button type="button" onClick={(evt, location) => DisplayInfo({ countries }, 'countries')}>Reveal countries</button>
             <Button />
         </div>
     )
