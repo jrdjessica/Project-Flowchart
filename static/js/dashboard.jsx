@@ -14,25 +14,34 @@ function DashboardContainer() {
 
     function Button() {
         const [showText, setShowText] = React.useState(false);
-        const onClick = () => {
-            if (showText === false) {
-                setShowText(true);
-            } else {
-                setShowText(false);
+        const [showDays, setShowDays] = React.useState(false);
+
+        function onClick(state, fx) {
+            if (state === false) {
+                fx(true);
+            } else if (state === true) {
+                fx(false);
             }
         }
+
         return (
             <div>
-                <button type="button" onClick={onClick}>Reveal countries</button>
-                {showText ? <DisplayInfo evt={countries} /> : null}
+                <div>
+                    <button type="button" onClick={() => onClick(showText, setShowText)}>Reveal countries</button>
+                    {showText ? <DisplayInfo evt={countries} location="countries" /> : null}
+                </div>
+                <div>
+                    <button type="button" onClick={() => onClick(showDays, setShowDays)}>Reveal days</button>
+                    {showDays ? <DisplayInfo evt={numberDays} location="num-days" /> : null}
+                </div>
             </div>
         );
     }
 
+
     function DisplayInfo(props) {
-        console.log(props.evt);
         return (
-            <div id="country">
+            <div id={props.location}>
                 {props.evt}
             </div>
         )
@@ -78,7 +87,7 @@ function DashboardContainer() {
                 setStartDate(firstDate.toDateString());
                 setEndDate(endDate.toDateString());
 
-                setNumberDays((new Date(endDate).getTime() - new Date(startDate).getTime()) / (1000 * 60 * 60 * 24))
+                setNumberDays((new Date(endDate).getTime() - new Date(firstDate).getTime()) / (1000 * 60 * 60 * 24))
             });
     }, []);
 
@@ -102,12 +111,16 @@ function DashboardContainer() {
             <div>
                 From {startDate} to {endDate}
             </div>
-
-            <div onMouseEnter={() => setNumberDays((new Date(endDate).getTime() - new Date(startDate).getTime()) / (1000 * 60 * 60 * 24))}
+            {/* <div onMouseEnter={() => setNumberDays((new Date(endDate).getTime() - new Date(startDate).getTime()) / (1000 * 60 * 60 * 24))}
                 onMouseLeave={() => setNumberDays('?')}>
                 <br />
                 This data is for {numberDays} days
-            </div>
+            </div> */}
+            {/* <div>
+                <button type="button" onClick={onClick}>Reveal days</button>
+                {showText ? <DisplayInfo evt={numberDays} location="num-days" /> : null}
+            </div> */}
+
 
             <Button />
         </div>
