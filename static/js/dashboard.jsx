@@ -13,15 +13,19 @@ function DashboardContainer() {
     const [fact, setFact] = React.useState();
 
 
-    function CreateFact(numberDays) {
-        setFact(dieHardTimes);
-        const dieHardTimes = "s";
-        // const lawAndOrderTimes = 
-        // const moonTimes = 
-        // const marsTimes = 
-        // const harryPotterTimes = 
-        // const oldestTreeTimes = 
-        // const mayflyTimes = 
+    function CreateFact(numDays) {
+        const dieHardTimes = numDays * 24 * 60;
+        const lawAndOrderTimes = numDays * 24 * 60 / 22 / 42;
+        const moonTimes = numDays / 3;
+        const marsTimes = numDays / 30.44 / 9;
+        const harryPotterTimes = numDays * 24 / 72.27;
+        const oldestTreeTimes = numDays / 365 / 4845;
+        const mayflyTimes = numDays;
+
+        // const items = [dieHardTimes];
+        // console.log(dieHardTimes);
+
+        setFact(items[Math.floor(Math.random() * items.length)])
     }
 
 
