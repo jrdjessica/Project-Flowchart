@@ -10,17 +10,31 @@ function DashboardContainer() {
 
     const [numberDays, setNumberDays] = React.useState();
     const [countries, setCountries] = React.useState();
+    const [fact, setFact] = React.useState();
+
+
+    function CreateFact(numberDays) {
+        setFact(dieHardTimes);
+        const dieHardTimes = "s";
+        // const lawAndOrderTimes = 
+        // const moonTimes = 
+        // const marsTimes = 
+        // const harryPotterTimes = 
+        // const oldestTreeTimes = 
+        // const mayflyTimes = 
+    }
 
 
     function Button() {
         const [showText, setShowText] = React.useState(false);
         const [showDays, setShowDays] = React.useState(false);
+        const [showTimeFact, setShowTimeFact] = React.useState(false);
 
-        function onClick(state, fx) {
+        function onClick(state, setFx) {
             if (state === false) {
-                fx(true);
+                setFx(true);
             } else if (state === true) {
-                fx(false);
+                setFx(false);
             }
         }
 
@@ -33,6 +47,10 @@ function DashboardContainer() {
                 <div>
                     <button type="button" onClick={() => onClick(showDays, setShowDays)}>Reveal days</button>
                     {showDays ? <DisplayInfo evt={numberDays} location="num-days" /> : null}
+                </div>
+                <div>
+                    <button type="button" onClick={() => { onClick(showTimeFact, setShowTimeFact); CreateFact(numberDays); }}>Reveal facts</button>
+                    {showTimeFact ? <DisplayInfo evt={fact} location="fact" /> : null}
                 </div>
             </div>
         );
