@@ -11,6 +11,25 @@ function DashboardContainer() {
     const [numberDays, setNumberDays] = React.useState();
     const [countries, setCountries] = React.useState();
 
+    function Button() {
+        const [showText, setShowText] = React.useState(false);
+        const onClick = () => {
+            if (showText === false) {
+                setShowText(true);
+            } else {
+                setShowText(false);
+            }
+        }
+        return (
+            <div>
+                <button onClick={onClick}>Click me</button>
+                {showText ? <Text /> : null}
+            </div>
+        );
+    }
+    const Text = () => <div>Click</div>;
+
+
 
     React.useEffect(() => {
         fetch('/api/shop')
@@ -34,7 +53,7 @@ function DashboardContainer() {
 
                 // Number of countries
                 setNumCountries(countries.size);
-                setCountries(countries);
+                setCountries(Array.from(countries).join(', '));
 
                 // Average order value and total order value
                 let totalValue = 0;
@@ -86,6 +105,7 @@ function DashboardContainer() {
 
             <div id='countries'></div>
             <button type="button" onClick={(evt, location) => DisplayInfo({ countries }, 'countries')}>Reveal countries</button>
+            <Button />
         </div>
     )
 }
