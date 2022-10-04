@@ -2,6 +2,7 @@
 
 
 function DashboardContainer() {
+    // Data from fetch request
     const [numOrders, setNumOrders] = React.useState(0);
     const [numCountries, setNumCountries] = React.useState(0);
     const [totalSales, setTotalSales] = React.useState(0);
@@ -9,14 +10,14 @@ function DashboardContainer() {
     const [startDate, setStartDate] = React.useState();
     const [endDate, setEndDate] = React.useState();
 
+    // Data for buttons
     const [numberDays, setNumberDays] = React.useState();
     const [countries, setCountries] = React.useState();
-
     const [fact, setFact] = React.useState();
 
 
     function CreateFact(numDays) {
-
+        // Create fact comparing time to shop duration
         const dieHardTimes = `watch Die Hard ${(numDays * 24 * 60).toFixed(2)} times`;
         const lawAndOrderTimes = `watch ${(numDays * 24 * 60 / 22 / 42).toFixed(2)} seasons of Law And Order`;
         const moonTimes = `travel to the moon and back ${(numDays / 3 / 2).toFixed(2)} times`;
@@ -24,15 +25,16 @@ function DashboardContainer() {
         const harryPotterTimes = `read the Harry Potter series ${(numDays * 24 / 72.27).toFixed(2)} times`;
         const mayflyTimes = `witness ${numDays} generations of mayflies`;
 
-        const items = [dieHardTimes, lawAndOrderTimes, moonTimes, marsTimes, harryPotterTimes, oldestTreeTimes, mayflyTimes];
+        const items = [dieHardTimes, lawAndOrderTimes, moonTimes, marsTimes, harryPotterTimes, mayflyTimes];
 
+        // Choose random fact to display from array
         setFact(`During this time, you could ${items[Math.floor(Math.random() * items.length)]}`)
     }
 
     function Button() {
+        // Click button to show and hide text
         const [showText, setShowText] = React.useState(false);
         const [showDays, setShowDays] = React.useState(false);
-        const [showTimeFact, setShowTimeFact] = React.useState(false);
 
         function onClick(state, setFx) {
             if (state === false) {
@@ -61,7 +63,7 @@ function DashboardContainer() {
     }
 
     function DisplayInfo(props) {
-        // Display button information
+        // Display information when button is clicked
         return (
             <div id={props.location}>
                 {props.evt}
@@ -113,8 +115,6 @@ function DashboardContainer() {
             });
     }, []);
 
-
-
     return (
         <div>
             <div>
@@ -137,7 +137,6 @@ function DashboardContainer() {
         </div>
     )
 }
-
 
 
 ReactDOM.render(<DashboardContainer />, document.querySelector('#dashboard'));
