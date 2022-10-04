@@ -41,8 +41,6 @@ function DashboardContainer() {
                 setFx(false);
             }
         }
-        console.log(fact);
-        console.log(showTimeFact);
 
         return (
             <div>
@@ -57,19 +55,13 @@ function DashboardContainer() {
                 <div>
                     <button type="button" onClick={() => CreateFact(numberDays)}>Reveal facts</button>
                     {<DisplayInfo evt={fact} location="fact" />}
-                    {/* <button type="button" onClick={() => {
-                        onClick(showTimeFact, setShowTimeFact);
-                        CreateFact(numberDays);
-                    }}>Reveal facts</button>
-                    {showTimeFact ? <DisplayInfo evt={fact} location="fact" /> : null} */}
-                    {/* <button type="button" onClick={() => { CreateFact(numberDays); onClick(showTimeFact, setShowTimeFact); }}>Reveal facts</button>
-                    {showTimeFact ? <DisplayInfo evt={fact} location="fact" /> : null} */}
                 </div>
             </div >
         );
     }
 
     function DisplayInfo(props) {
+        // Display button information
         return (
             <div id={props.location}>
                 {props.evt}
@@ -141,17 +133,6 @@ function DashboardContainer() {
             <div>
                 From {startDate} to {endDate}
             </div>
-            {/* <div onMouseEnter={() => setNumberDays((new Date(endDate).getTime() - new Date(startDate).getTime()) / (1000 * 60 * 60 * 24))}
-                onMouseLeave={() => setNumberDays('?')}>
-                <br />
-                This data is for {numberDays} days
-            </div> */}
-            {/* <div>
-                <button type="button" onClick={onClick}>Reveal days</button>
-                {showText ? <DisplayInfo evt={numberDays} location="num-days" /> : null}
-            </div> */}
-
-
             <Button />
         </div>
     )
