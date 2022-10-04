@@ -1,5 +1,6 @@
 'use strict'
 
+
 function DashboardContainer() {
     const [numOrders, setNumOrders] = React.useState(0);
     const [numCountries, setNumCountries] = React.useState(0);
@@ -10,24 +11,23 @@ function DashboardContainer() {
 
     const [numberDays, setNumberDays] = React.useState();
     const [countries, setCountries] = React.useState();
+
     const [fact, setFact] = React.useState();
 
 
     function CreateFact(numDays) {
-        const dieHardTimes = numDays * 24 * 60;
-        const lawAndOrderTimes = numDays * 24 * 60 / 22 / 42;
-        const moonTimes = numDays / 3;
-        const marsTimes = numDays / 30.44 / 9;
-        const harryPotterTimes = numDays * 24 / 72.27;
-        const oldestTreeTimes = numDays / 365 / 4845;
-        const mayflyTimes = numDays;
 
-        // const items = [dieHardTimes];
-        // console.log(dieHardTimes);
+        const dieHardTimes = `watch Die Hard ${(numDays * 24 * 60).toFixed(2)} times`;
+        const lawAndOrderTimes = `watch ${(numDays * 24 * 60 / 22 / 42).toFixed(2)} seasons of Law And Order`;
+        const moonTimes = `travel to the moon and back ${(numDays / 3 / 2).toFixed(2)} times`;
+        const marsTimes = `travel to Mars ${(numDays / 30.44 / 9).toFixed(2)} times`;
+        const harryPotterTimes = `read the Harry Potter series ${(numDays * 24 / 72.27).toFixed(2)} times`;
+        const mayflyTimes = `witness ${numDays} generations of mayflies`;
 
-        setFact(items[Math.floor(Math.random() * items.length)])
+        const items = [dieHardTimes, lawAndOrderTimes, moonTimes, marsTimes, harryPotterTimes, oldestTreeTimes, mayflyTimes];
+
+        setFact(`During this time, you could ${items[Math.floor(Math.random() * items.length)]}`)
     }
-
 
     function Button() {
         const [showText, setShowText] = React.useState(false);
@@ -41,6 +41,8 @@ function DashboardContainer() {
                 setFx(false);
             }
         }
+        console.log(fact);
+        console.log(showTimeFact);
 
         return (
             <div>
@@ -53,13 +55,19 @@ function DashboardContainer() {
                     {showDays ? <DisplayInfo evt={numberDays} location="num-days" /> : null}
                 </div>
                 <div>
-                    <button type="button" onClick={() => { onClick(showTimeFact, setShowTimeFact); CreateFact(numberDays); }}>Reveal facts</button>
-                    {showTimeFact ? <DisplayInfo evt={fact} location="fact" /> : null}
+                    <button type="button" onClick={() => CreateFact(numberDays)}>Reveal facts</button>
+                    {<DisplayInfo evt={fact} location="fact" />}
+                    {/* <button type="button" onClick={() => {
+                        onClick(showTimeFact, setShowTimeFact);
+                        CreateFact(numberDays);
+                    }}>Reveal facts</button>
+                    {showTimeFact ? <DisplayInfo evt={fact} location="fact" /> : null} */}
+                    {/* <button type="button" onClick={() => { CreateFact(numberDays); onClick(showTimeFact, setShowTimeFact); }}>Reveal facts</button>
+                    {showTimeFact ? <DisplayInfo evt={fact} location="fact" /> : null} */}
                 </div>
-            </div>
+            </div >
         );
     }
-
 
     function DisplayInfo(props) {
         return (
@@ -109,7 +117,7 @@ function DashboardContainer() {
                 setStartDate(firstDate.toDateString());
                 setEndDate(endDate.toDateString());
 
-                setNumberDays((new Date(endDate).getTime() - new Date(firstDate).getTime()) / (1000 * 60 * 60 * 24))
+                setNumberDays((new Date(endDate).getTime() - new Date(firstDate).getTime()) / (1000 * 60 * 60 * 24));
             });
     }, []);
 
