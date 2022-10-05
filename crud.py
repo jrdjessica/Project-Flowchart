@@ -52,6 +52,10 @@ def create_customer(line):
         elif line[comp] != '':
             address += f'{line[comp]}, '
 
+    print(address)
+    print('********************')
+    print('********************')
+
     # create latitude and longitude
     parms = dict()
     parms['address'] = address
