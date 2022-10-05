@@ -15,6 +15,10 @@ def get_orders(file, filename):
     if not os.path.exists(f'input/{user_id}/'):
         os.makedirs(f'input/{user_id}/')
 
+    print(file)
+    print('********************')
+    print('********************')
+
     # Path to user file
     path = f'input/{user_id}/{filename}'
 

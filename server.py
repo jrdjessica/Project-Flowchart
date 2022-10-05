@@ -74,25 +74,28 @@ def show_upload_file():
 def upload_file():
     """User uploads csv file that is parsed."""
 
-    file = request.files['file']
+    uploaded_files = request.files.getlist("file")
 
-    if file:
-        filename = secure_filename(file.filename)
-        file_type = filename.split('.')[1].lower()
-    else:
-        flash('Error. No selected file')
-        return render_template('upload.html')
+    # Iterate through upload files
+    for file in uploaded_files:
+        if file:
+            filename = secure_filename(file.filename)
+            file_type = filename.split('.')[1].lower()
+        else:
+            flash('Error. No selected file')
+            return render_template('upload.html')
 
-    if file_type == 'csv':
-        seed.get_orders(file, filename)
-        flash('Success')
-        return redirect('/map')
-    elif file_type != 'csv':
-        flash('Error. Incorrect file type')
-        return render_template('upload.html')
-    else:
-        flash('Error')
-        return render_template('upload.html')
+        if file_type == 'csv':
+            seed.get_orders(file, filename)
+            flash('Success')
+            if file == uploaded_files[-1]:
+                return redirect('/dashboard')
+        elif file_type != 'csv':
+            flash('Error. Incorrect file type')
+            return render_template('upload.html')
+        else:
+            flash('Error')
+            return render_template('upload.html')
 
 
 @app.route('/api/shop')
