@@ -219,12 +219,12 @@ def get_image_search():
                            thumbnail_url1=thumbnail_url1,
                            thumbnail_url2=thumbnail_url2,
                            thumbnail_url3=thumbnail_url3,
-                           thumbnail_url3=thumbnail_url4,
-                           thumbnail_url3=thumbnail_url5,
-                           thumbnail_url3=thumbnail_url6,
-                           thumbnail_url3=thumbnail_url7,
-                           thumbnail_url3=thumbnail_url8,
-                           thumbnail_url3=thumbnail_url9)
+                           thumbnail_url4=thumbnail_url4,
+                           thumbnail_url5=thumbnail_url5,
+                           thumbnail_url6=thumbnail_url6,
+                           thumbnail_url7=thumbnail_url7,
+                           thumbnail_url8=thumbnail_url8,
+                           thumbnail_url9=thumbnail_url9)
 
 
 if __name__ == "__main__":
