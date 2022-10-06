@@ -2,7 +2,7 @@
 
 from datetime import datetime
 from flask import Flask, render_template, redirect, request, flash, session, jsonify
-from model import db, connect_to_db, Order
+from model import db, connect_to_db, Customer, Order
 from werkzeug.utils import secure_filename
 
 import crud
@@ -22,6 +22,23 @@ def show_homepage():
     """Displays homepage."""
 
     return render_template('homepage.html')
+
+
+@app.route('/demo')
+def show_demo():
+    """Users view demo data."""
+
+    session['user_id'] = 1
+    # # file = request.files['input/1/EtsyDemoData.csv']
+    # file = 'input/1/EtsyDemoData.csv'
+    # # file = input/{user_id}/{filename}
+    # # filename = secure_filename(file.filename)
+    # filename = 'EtsyDemoData.csv'
+
+    # if file:
+    #     seed.get_orders(file, filename)
+
+    return redirect('/dashboard')
 
 
 @app.route('/account', methods=['POST'])
@@ -102,6 +119,8 @@ def upload_file():
 def shop_info():
     """Return JSON of shop data."""
 
+    user_id = session['user_id']
+
     orders = [
         {
             'fname': order.customer.fname,
@@ -117,10 +136,9 @@ def shop_info():
             'total': order.total,
             'net': order.net,
         }
-        for order in Order.query.all()
+        for order in Order.query.filter().all()
+        if order.customer.user == user_id
     ]
-
-    return jsonify(orders)
 
 
 @app.route('/dashboard')

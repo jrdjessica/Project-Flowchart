@@ -9,6 +9,7 @@ function drawChart() {
     fetch('/api/shop')
         .then(res => res.json())
         .then(orders => {
+            console.log(orders);
 
             // Create chart
             const data = new google.visualization.DataTable();
