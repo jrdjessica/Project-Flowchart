@@ -78,7 +78,7 @@ def delete_user_account():
 
     flash('Your account was successfully deleted.')
 
-    return redirect('/homepage')
+    return redirect('/')
 
 
 @app.route('/file')
