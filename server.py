@@ -123,22 +123,23 @@ def shop_info():
 
     orders = [
         {
-            'fname': order.customer.fname,
-            'lname': order.customer.lname,
-            'city': order.customer.city,
-            'state': order.customer.state,
-            'country': order.customer.country,
-            'address': order.customer.address,
-            'latitude': order.customer.latitude,
-            'longitude': order.customer.longitude,
-            'num_items': order.num_items,
-            'date': order.date,
-            'total': order.total,
-            'net': order.net,
+            'fname': customer.fname,
+            'lname': customer.lname,
+            'city': customer.city,
+            'state': customer.state,
+            'country': customer.country,
+            'address': customer.address,
+            'latitude': customer.latitude,
+            'longitude': customer.longitude,
+            'num_items': customer.order[0].num_items,
+            'date': customer.order[0].date,
+            'total': customer.order[0].total,
+            'net': customer.order[0].net,
         }
-        for order in Order.query.filter().all()
-        if order.customer.user == user_id
+        for customer in Customer.query.filter(Customer.user_id == user_id).all()
     ]
+
+    return jsonify(orders)
 
 
 @app.route('/dashboard')
