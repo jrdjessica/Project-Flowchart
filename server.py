@@ -208,8 +208,23 @@ def get_image_search():
     thumbnail_url1 = search_results['value'][0]['thumbnailUrl']
     thumbnail_url2 = search_results['value'][1]['thumbnailUrl']
     thumbnail_url3 = search_results['value'][2]['thumbnailUrl']
+    thumbnail_url4 = search_results['value'][3]['thumbnailUrl']
+    thumbnail_url5 = search_results['value'][4]['thumbnailUrl']
+    thumbnail_url6 = search_results['value'][5]['thumbnailUrl']
+    thumbnail_url7 = search_results['value'][6]['thumbnailUrl']
+    thumbnail_url8 = search_results['value'][7]['thumbnailUrl']
+    thumbnail_url9 = search_results['value'][8]['thumbnailUrl']
 
-    return render_template('inspiration.html', thumbnail_url1=thumbnail_url1, thumbnail_url2=thumbnail_url2, thumbnail_url3=thumbnail_url3)
+    return render_template('inspiration.html',
+                           thumbnail_url1=thumbnail_url1,
+                           thumbnail_url2=thumbnail_url2,
+                           thumbnail_url3=thumbnail_url3,
+                           thumbnail_url3=thumbnail_url4,
+                           thumbnail_url3=thumbnail_url5,
+                           thumbnail_url3=thumbnail_url6,
+                           thumbnail_url3=thumbnail_url7,
+                           thumbnail_url3=thumbnail_url8,
+                           thumbnail_url3=thumbnail_url9)
 
 
 if __name__ == "__main__":
