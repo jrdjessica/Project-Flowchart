@@ -2,7 +2,7 @@
 
 from datetime import datetime
 from flask import Flask, render_template, redirect, request, flash, session, jsonify
-from model import db, connect_to_db, Customer, Order
+from model import db, connect_to_db, Customer
 from werkzeug.utils import secure_filename
 
 import crud
@@ -29,14 +29,6 @@ def show_demo():
     """Users view demo data."""
 
     session['user_id'] = 1
-    # # file = request.files['input/1/EtsyDemoData.csv']
-    # file = 'input/1/EtsyDemoData.csv'
-    # # file = input/{user_id}/{filename}
-    # # filename = secure_filename(file.filename)
-    # filename = 'EtsyDemoData.csv'
-
-    # if file:
-    #     seed.get_orders(file, filename)
 
     return redirect('/dashboard')
 
