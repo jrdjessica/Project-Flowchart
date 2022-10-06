@@ -72,6 +72,15 @@ def user_login():
         return redirect('/file')
 
 
+@app.route('/delete')
+def delete_user_account():
+    """Delete user account data."""
+
+    flash('Your account was successfully deleted.')
+
+    return redirect('/homepage')
+
+
 @app.route('/file')
 def show_upload_file():
     """Show page for user to upload file."""
