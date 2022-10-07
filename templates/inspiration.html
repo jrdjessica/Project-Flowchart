@@ -15,8 +15,18 @@
         <input type='text' name="search-term" id="search">
         <button type="submit">Submit</button>
     </form>
+    <div>
+        Recent search:
+        {% if searches is defined %}
+        <div>
+            {% for search in searches %}
+            {{ search }}
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
 
-    <div id="inspiration"></div>
+    <!-- <div id="inspiration"></div>
     {% if thumbnail_url1 is defined %}
     <img src="{{ thumbnail_url1 }}" alt="image search result 1">
     <img src="{{ thumbnail_url2 }}" alt="image search result 2">
@@ -27,7 +37,7 @@
     <img src="{{ thumbnail_url7 }}" alt="image search result 7">
     <img src="{{ thumbnail_url8 }}" alt="image search result 8">
     <img src="{{ thumbnail_url9 }}" alt="image search result 9">
-    {% endif %}
+    {% endif %} -->
 
 </body>
 

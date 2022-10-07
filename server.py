@@ -1,8 +1,9 @@
 """Server for running app."""
 
+from collections import deque
 from datetime import datetime
 from flask import Flask, render_template, redirect, request, flash, session, jsonify
-from model import db, connect_to_db, Customer, Order
+from model import db, connect_to_db, Order
 from werkzeug.utils import secure_filename
 
 import crud
@@ -211,6 +212,14 @@ def get_image_search():
     search_url = "https://api.bing.microsoft.com/v7.0/images/search"
     search_term = request.args.get('search-term')
 
+    if session.get("searches") is None:
+        session["searches"] = []
+        session['searches'].append(search_term)
+    else:
+        searches = session['searches']
+        searches.append(search_term)
+        session['searches'] = searches
+
     headers = {"Ocp-Apim-Subscription-Key": key}
     params = {"q": search_term, "license": "public", "imageType": "photo"}
 
@@ -228,7 +237,13 @@ def get_image_search():
     thumbnail_url8 = search_results['value'][7]['thumbnailUrl']
     thumbnail_url9 = search_results['value'][8]['thumbnailUrl']
 
+    if len(session['searches']) > 5:
+        searches.pop(0)
+
+    searches = session['searches']
+
     return render_template('inspiration.html',
+                           searches=searches,
                            thumbnail_url1=thumbnail_url1,
                            thumbnail_url2=thumbnail_url2,
                            thumbnail_url3=thumbnail_url3,
