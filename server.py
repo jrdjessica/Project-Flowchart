@@ -2,7 +2,7 @@
 
 from datetime import datetime
 from flask import Flask, render_template, redirect, request, flash, session, jsonify
-from model import db, connect_to_db, Customer
+from model import db, connect_to_db, Customer, Order
 from werkzeug.utils import secure_filename
 
 import crud
@@ -128,20 +128,20 @@ def shop_info():
 
     orders = [
         {
-            'fname': customer.fname,
-            'lname': customer.lname,
-            'city': customer.city,
-            'state': customer.state,
-            'country': customer.country,
-            'address': customer.address,
-            'latitude': customer.latitude,
-            'longitude': customer.longitude,
-            'num_items': customer.order[0].num_items,
-            'date': customer.order[0].date,
-            'total': customer.order[0].total,
-            'net': customer.order[0].net,
+            'fname': order.customer.fname,
+            'lname': order.customer.lname,
+            'city': order.customer.city,
+            'state': order.customer.state,
+            'country': order.customer.country,
+            'address': order.customer.address,
+            'latitude': order.customer.latitude,
+            'longitude': order.customer.longitude,
+            'num_items': order.num_items,
+            'date': order.date,
+            'total': order.total,
+            'net': order.net,
         }
-        for customer in Customer.query.filter(Customer.user_id == user_id).all()
+        for order in Order.query.filter(Order.user_id == user_id).all()
     ]
 
     return jsonify(orders)
