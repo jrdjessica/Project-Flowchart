@@ -92,9 +92,10 @@ def add_to_database(file):
 def create_order(line):
     """Create an order."""
 
+    user_id = session['user_id']
     customer_id = session['customer_id']
 
-    order = Order(order_id=line['Order ID'], customer_id=customer_id, num_items=line['Number of Items'], date=line['Sale Date'],
+    order = Order(order_id=line['Order ID'], customer_id=customer_id, user_id=user_id, num_items=line['Number of Items'], date=line['Sale Date'],
                   total=line['Order Total'], net=line['Order Net'])
 
     return order
@@ -112,8 +113,19 @@ def delete_account(user_id):
     if user_id == 1:
         flash('Error. This demo code cannot be deleted')
     else:
-        path = f'input/{user_id}'
-        shutil.rmtree(path)
+        # path = f'input/{user_id}'
+        # shutil.rmtree(path)
+        for customer in Customer.query.filter(Customer.user_id == user_id).all():
+            cust_id = customer.customer_id
+            db.session.delete(customer)
+            db.session.delete(customer.user)
+            for order in Order.query.filter(Order.customer_id == cust_id).all():
+                db.session.delete(order)
+        db.session.commit()
+
+#             for customer in Customer.query.filter(Customer.user_id == 2).all():
+# ...     print(cust.order[0])
+# ...
 
 
 if __name__ == "__main__":

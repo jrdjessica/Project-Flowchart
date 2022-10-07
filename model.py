@@ -16,6 +16,7 @@ class User(db.Model):
     password = db.Column(db.String, nullable=False)
 
     customer = db.relationship('Customer', back_populates='user')
+    order = db.relationship('Order', back_populates='user')
 
     def __repr__(self):
 
@@ -56,12 +57,14 @@ class Order(db.Model):
 
     order_id = db.Column(db.String, primary_key=True)
     customer_id = db.Column(db.Integer, db.ForeignKey('customers.customer_id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     num_items = db.Column(db.Integer)
     date = db.Column(db.DateTime)
     total = db.Column(db.Float)
     net = db.Column(db.Float)
 
     customer = db.relationship('Customer', back_populates='order')
+    user = db.relationship('User', back_populates='order')
 
     def __repr__(self):
 

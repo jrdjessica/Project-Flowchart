@@ -25,6 +25,7 @@ def get_orders(file, filename):
         with open(f'input/{user_id}/{filename}', 'r') as csvfile:
 
             csv_read = csv.DictReader(csvfile)
+            print('*******************88read')
 
             for line in csv_read:
                 customer = crud.create_customer(line)
