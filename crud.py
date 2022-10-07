@@ -113,19 +113,14 @@ def delete_account(user_id):
     if user_id == 1:
         flash('Error. This demo code cannot be deleted')
     else:
-        # path = f'input/{user_id}'
-        # shutil.rmtree(path)
+        path = f'input/{user_id}'
+        shutil.rmtree(path)
         for customer in Customer.query.filter(Customer.user_id == user_id).all():
-            cust_id = customer.customer_id
             db.session.delete(customer)
             db.session.delete(customer.user)
-            for order in Order.query.filter(Order.customer_id == cust_id).all():
-                db.session.delete(order)
+        for order in Order.query.filter(Order.customer_id == user_id).all():
+            db.session.delete(order)
         db.session.commit()
-
-#             for customer in Customer.query.filter(Customer.user_id == 2).all():
-# ...     print(cust.order[0])
-# ...
 
 
 if __name__ == "__main__":
