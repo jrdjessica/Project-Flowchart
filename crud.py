@@ -2,12 +2,13 @@
 
 
 import csv
-from flask import session
-from model import User, Customer, Order, connect_to_db
+from flask import session, flash
+from model import User, Customer, Order, connect_to_db, db
 import os
 
 import json
 import ssl
+import shutil
 
 import urllib.request
 import urllib.parse
@@ -103,6 +104,16 @@ def convert_currency(data):
     """Return converted currency total."""
 
     return data['conversion_result']
+
+
+def delete_account(user_id):
+    """Delete file and remove from database."""
+
+    if user_id == 1:
+        flash('Error. This demo code cannot be deleted')
+    else:
+        path = f'input/{user_id}'
+        shutil.rmtree(path)
 
 
 if __name__ == "__main__":

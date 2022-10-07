@@ -76,6 +76,10 @@ def user_login():
 def delete_user_account():
     """Delete user account data."""
 
+    user_id = session['user_id']
+
+    crud.delete_account(user_id)
+
     flash('Your account was successfully deleted.')
 
     return redirect('/')
