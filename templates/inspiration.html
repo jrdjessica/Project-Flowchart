@@ -15,14 +15,14 @@
         <input type='text' name="search-term" id="search">
         <button type="submit">Submit</button>
     </form>
-    <div>
+    <div id="recent-searches">
         Recent search:
         {% if searches is defined %}
-        <div>
-            {% for search in searches %}
-            {{ search }}
-            {% endfor %}
-        </div>
+        {% for term in searches %}
+        <button id="search-{{ term }}" onClick=clickWord(name) name="{{ term }}">
+            {{ term }}
+        </button>
+        {% endfor %}
         {% endif %}
     </div>
 
@@ -38,6 +38,7 @@
     <img src="{{ thumbnail_url8 }}" alt="image search result 8">
     <img src="{{ thumbnail_url9 }}" alt="image search result 9">
     {% endif %} -->
+    <script src="/static/js/inspiration.js"></script>
 
 </body>
 

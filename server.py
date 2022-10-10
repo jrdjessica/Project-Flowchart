@@ -204,12 +204,21 @@ def show_inspiration():
     return render_template('inspiration.html')
 
 
+@app.route('/api/searches')
+def get_recent_searches():
+    """Get recent searches."""
+
+    searches = session["searches"]
+
+    return jsonify(searches)
+
+
 @app.route('/api/inspiration')
 def get_image_search():
     """Get images from search."""
 
-    key = os.environ['BING_KEY']
-    search_url = "https://api.bing.microsoft.com/v7.0/images/search"
+    # key = os.environ['BING_KEY']
+    # search_url = "https://api.bing.microsoft.com/v7.0/images/search"
     search_term = request.args.get('search-term')
 
     if session.get("searches") is None:
@@ -220,22 +229,22 @@ def get_image_search():
         searches.append(search_term)
         session['searches'] = searches
 
-    headers = {"Ocp-Apim-Subscription-Key": key}
-    params = {"q": search_term, "license": "public", "imageType": "photo"}
+    # headers = {"Ocp-Apim-Subscription-Key": key}
+    # params = {"q": search_term, "license": "public", "imageType": "photo"}
 
-    response = requests.get(search_url, headers=headers, params=params)
-    response.raise_for_status()
-    search_results = response.json()
+    # response = requests.get(search_url, headers=headers, params=params)
+    # response.raise_for_status()
+    # search_results = response.json()
 
-    thumbnail_url1 = search_results['value'][0]['thumbnailUrl']
-    thumbnail_url2 = search_results['value'][1]['thumbnailUrl']
-    thumbnail_url3 = search_results['value'][2]['thumbnailUrl']
-    thumbnail_url4 = search_results['value'][3]['thumbnailUrl']
-    thumbnail_url5 = search_results['value'][4]['thumbnailUrl']
-    thumbnail_url6 = search_results['value'][5]['thumbnailUrl']
-    thumbnail_url7 = search_results['value'][6]['thumbnailUrl']
-    thumbnail_url8 = search_results['value'][7]['thumbnailUrl']
-    thumbnail_url9 = search_results['value'][8]['thumbnailUrl']
+    # thumbnail_url1 = search_results['value'][0]['thumbnailUrl']
+    # thumbnail_url2 = search_results['value'][1]['thumbnailUrl']
+    # thumbnail_url3 = search_results['value'][2]['thumbnailUrl']
+    # thumbnail_url4 = search_results['value'][3]['thumbnailUrl']
+    # thumbnail_url5 = search_results['value'][4]['thumbnailUrl']
+    # thumbnail_url6 = search_results['value'][5]['thumbnailUrl']
+    # thumbnail_url7 = search_results['value'][6]['thumbnailUrl']
+    # thumbnail_url8 = search_results['value'][7]['thumbnailUrl']
+    # thumbnail_url9 = search_results['value'][8]['thumbnailUrl']
 
     if len(session['searches']) > 5:
         searches.pop(0)
@@ -243,16 +252,16 @@ def get_image_search():
     searches = session['searches']
 
     return render_template('inspiration.html',
-                           searches=searches,
-                           thumbnail_url1=thumbnail_url1,
-                           thumbnail_url2=thumbnail_url2,
-                           thumbnail_url3=thumbnail_url3,
-                           thumbnail_url4=thumbnail_url4,
-                           thumbnail_url5=thumbnail_url5,
-                           thumbnail_url6=thumbnail_url6,
-                           thumbnail_url7=thumbnail_url7,
-                           thumbnail_url8=thumbnail_url8,
-                           thumbnail_url9=thumbnail_url9)
+                           searches=searches)
+    #    thumbnail_url1=thumbnail_url1,
+    #    thumbnail_url2=thumbnail_url2,
+    #    thumbnail_url3=thumbnail_url3,
+    #    thumbnail_url4=thumbnail_url4,
+    #    thumbnail_url5=thumbnail_url5,
+    #    thumbnail_url6=thumbnail_url6,
+    #    thumbnail_url7=thumbnail_url7,
+    #    thumbnail_url8=thumbnail_url8,
+    #    thumbnail_url9=thumbnail_url9)
 
 
 if __name__ == "__main__":
