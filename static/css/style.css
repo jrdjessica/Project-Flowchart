@@ -36,6 +36,26 @@ h2 {
     background: #fad3e0;
 }
 
+.button {
+    margin: 25px;
+    display: inline-block;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 500;
+    font-size: 18px;
+    color: rgb(9, 9, 9);
+    padding: 10px 10px;
+    background-color: rgb(246, 214, 214);
+    opacity: 50%;
+    border: 2px solid white;
+}
+
+.button:hover {
+    color: rgb(0, 0, 0);
+    border-color: gray;
+    background-color: rgb(159, 159, 159);
+    opacity: 50%;
+}
+
 
 .row {
     display: flex;
