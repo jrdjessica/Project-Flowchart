@@ -56,6 +56,17 @@ h2 {
     opacity: 50%;
 }
 
+input[type='email'],
+input[type='password'] {
+    width: 200px;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid rgb(52, 52, 52);
+    outline: none;
+    padding: 5px 0px;
+    color: black;
+    text-align: center;
+}
 
 .row {
     display: flex;
