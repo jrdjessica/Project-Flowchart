@@ -18,7 +18,7 @@
         <form action="/api/currency" method="POST">
             From
             <input type="number" name="enter-num" id="enter-num" step=0.01>
-            <select id="enter-cur" name="enter-cur">
+            <select id="enter-cur" name="enter-cur" class="button">
                 <option value="none" selected="selected" disabled hidden>Select a currency</option>
                 <option value="AUD">Australian Dollar</option>
                 <option value="CAD">Canadian Dollar</option>
@@ -38,7 +38,7 @@
                 <option value="UAH">Ukrainian Hryvnia</option>
             </select>
             <div>To
-                <select id="convert-cur" name="convert-cur">
+                <select id="convert-cur" name="convert-cur" class="button">
                     <option value="none" selected="selected" disabled hidden>Select a currency</option>
                     <option value="AUD">Australian Dollar</option>
                     <option value="CAD">Canadian Dollar</option>
@@ -65,14 +65,14 @@
                     {% endif %}
                 </p>
             </div>
-            <button type="submit">Convert</button>
+            <button type="submit" class="button">Convert</button>
         </form>
 
     </div>
 
     <div id="currency-converter"></div>
 
-    <div id="linechart-material" style="width: 900px; height: 500px"></div>
+    <div id="linechart-material" style="width: 900px; height: 500px" class="chart"></div>
 
     <script src="/static/js/lineChart.js"></script>
 

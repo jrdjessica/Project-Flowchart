@@ -47,15 +47,15 @@ function DashboardContainer() {
         return (
             <div>
                 <div>
-                    <button type="button" onClick={() => onClick(showText, setShowText)}>Reveal countries</button>
+                    <button type="button" className="button" onClick={() => onClick(showText, setShowText)}>Reveal countries</button>
                     {showText ? <DisplayInfo evt={countries} location="countries" /> : null}
                 </div>
                 <div>
-                    <button type="button" onClick={() => onClick(showDays, setShowDays)}>Reveal days</button>
+                    <button type="button" className="button" onClick={() => onClick(showDays, setShowDays)}>Reveal days</button>
                     {showDays ? <DisplayInfo evt={numberDays} location="num-days" /> : null}
                 </div>
                 <div>
-                    <button type="button" onClick={() => CreateFact(numberDays)}>Reveal facts</button>
+                    <button type="button" className="button" onClick={() => CreateFact(numberDays)}>Reveal facts</button>
                     {<DisplayInfo evt={fact} location="fact" />}
                 </div>
             </div >
