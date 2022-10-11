@@ -26,18 +26,24 @@
         {% endif %}
     </div>
 
-    <!-- <div id="inspiration"></div>
+    <div id="inspiration"></div>
     {% if thumbnail_url1 is defined %}
-    <img src="{{ thumbnail_url1 }}" alt="image search result 1">
-    <img src="{{ thumbnail_url2 }}" alt="image search result 2">
-    <img src="{{ thumbnail_url3 }}" alt="image search result 3">
-    <img src="{{ thumbnail_url4 }}" alt="image search result 4">
-    <img src="{{ thumbnail_url5 }}" alt="image search result 5">
-    <img src="{{ thumbnail_url6 }}" alt="image search result 6">
-    <img src="{{ thumbnail_url7 }}" alt="image search result 7">
-    <img src="{{ thumbnail_url8 }}" alt="image search result 8">
-    <img src="{{ thumbnail_url9 }}" alt="image search result 9">
-    {% endif %} -->
+    <div class="row">
+        <div class="column">
+            <img src="{{ thumbnail_url1 }}" alt="image search result 1">
+            <img src="{{ thumbnail_url2 }}" alt="image search result 2">
+            <img src="{{ thumbnail_url3 }}" alt="image search result 3">
+            <img src="{{ thumbnail_url4 }}" alt="image search result 4">
+            <img src="{{ thumbnail_url5 }}" alt="image search result 5">
+        </div>
+        <div class="column">
+            <img src="{{ thumbnail_url6 }}" alt="image search result 6">
+            <img src="{{ thumbnail_url7 }}" alt="image search result 7">
+            <img src="{{ thumbnail_url8 }}" alt="image search result 8">
+            <img src="{{ thumbnail_url9 }}" alt="image search result 9">
+        </div>
+    </div>
+    {% endif %}
     <script src="/static/js/inspiration.js"></script>
 
 </body>
