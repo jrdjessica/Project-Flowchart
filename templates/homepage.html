@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container-fluid">
         {% for msg in get_flashed_messages() %}
         <p class="flash-message">
             {{ msg }}
@@ -25,40 +25,43 @@
         <h6>Your one stop shop for viewing your shop data</h6>
 
         <div class="row">
-            <div class="col-12 col-sm-6 form">
-                <h2>Create an account</h2>
+            <div class="col-sm-2 form-grid"></div>
+            <div class="col-12 col-sm-4 form-grid form">
+                <h2>Sign up</h2>
                 <form action="/account" method="POST">
                     <p>
                         <label for="create-email">Enter email: </label>
-                        <input type="email" name="email" id="create-email" required></input>
+                        <input type="email" name="email" id="create-email" placeholder="Email" required></input>
                     </p>
                     <p>
                         <label for="create-pass">Enter password: </label>
-                        <input type="password" name="password" id="create-pass" minlength="6" required></input>
+                        <input type="password" name="password" id="create-pass" placeholder="Password" minlength="6"
+                            required></input>
                     </p>
-                    <button type="submit">Submit</button>
+                    <button type="submit" class="button">Submit</button>
                 </form>
             </div>
-            <div class="col-12 col-sm-6 form">
+            <div class="col-12 col-sm-4 form form-grid">
                 <h2>Log in</h2>
                 <form action="/login" method="POST">
                     <p>
                         <label for="login-email">Enter email: </label>
-                        <input type="text" name="email" id="login-email" required></input>
+                        <input type="text" name="email" id="login-email" placeholder="Email" required></input>
                     </p>
                     <p>
                         <label for="login-pass">Enter password: </label>
-                        <input type="text" name="password" id="login-pass" required></input>
+                        <input type="text" name="password" id="login-pass" placeholder="Password" required></input>
                     </p>
-                    <button type="submit">Submit</button>
+                    <button type="submit" class="button">Submit</button>
                 </form>
             </div>
+            <div class="col-sm-2 form-grid"></div>
         </div>
 
 
         <div>
             <form action="/demo">
-                <button type="submit">Click here to view demo data</button>
+                <button type="submit" class="button">Click here to view demo data</button>
             </form>
         </div>
 
