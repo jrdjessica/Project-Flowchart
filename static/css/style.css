@@ -11,6 +11,19 @@
     height: 100vh;
 }
 
+.navbar-custom-theme {
+    background: linear-gradient(to left, #f9d1d4, #d3cdec);
+    width: 100%;
+}
+
+.navbar-custom-theme .nav-link {
+    color: #3a3841;
+}
+
+.navbar-custom-theme .nav-link:hover {
+    color: white;
+}
+
 body {
     text-align: center;
 }
