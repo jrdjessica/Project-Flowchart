@@ -49,6 +49,10 @@ h2 {
     background: #fad3e0;
 }
 
+.dashboard {
+    padding: 40px 5px;
+}
+
 .button {
     margin: 25px;
     display: inline-block;

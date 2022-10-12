@@ -117,21 +117,32 @@ function DashboardContainer() {
 
     return (
         <div>
-            <div>
-                Number of orders: {numOrders}
-            </div>
-            <div>
-
-                Number of countries: {numCountries}
-            </div>
-            <div>
-                Total order value: {totalSales}
-            </div>
-            <div>
-                Average order value: {avgValue}
-            </div>
-            <div>
-                From {startDate} to {endDate}
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-md-3 dashboard">
+                        Number of orders
+                        <br />
+                        {numOrders}
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-3 dashboard">
+                        Number of countries
+                        <br />
+                        {numCountries}
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-3 dashboard">
+                        Total order value
+                        <br />
+                        {totalSales}
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-3 dashboard">
+                        Average order value
+                        <br />
+                        {avgValue}
+                    </div>
+                </div>
+                <div>
+                    From {startDate} to {endDate}
+                </div>
             </div>
             <Button />
         </div>
