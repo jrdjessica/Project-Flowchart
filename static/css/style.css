@@ -4,8 +4,8 @@
 }
 
 .container-fluid {
-    background: linear-gradient(#fff6e6, #ffc9e4, #fcc5e8);
-    /* background-image: url(/static/img/background.jpg); */
+    /* background: linear-gradient(#fff6e6, #ffc9e4, #fcc5e8); */
+    background-image: url(/static/img/background-blur-lighten.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
@@ -67,17 +67,16 @@ h4 {
 .form-grid {
     margin-top: 2%;
     margin-bottom: 2%;
-    padding: 3% 0%;
+    padding: 10px 0px 5px 0px;
 }
 
 .form {
-    /* border: 1px solid gray; */
-    background: #fad3e0;
+    background: #efe0d6;
+    border: 3px solid white;
 }
 
 .dashboard {
     padding: 40px 5px;
-    /* border: 1px dashed grey; */
 }
 
 .button {
@@ -89,8 +88,8 @@ h4 {
     font-size: 16px;
     color: black;
     padding: 10px 15px;
-    background-color: rgb(246, 214, 214);
-    opacity: 50%;
+    background-color: #efe0d6;
+    opacity: 90%;
     border: 3px solid white;
 }
 
@@ -98,7 +97,7 @@ h4 {
     color: white;
     border-color: gray;
     background-color: rgb(159, 159, 159);
-    opacity: 50%;
+    opacity: 90%;
 }
 
 input[type='email'],
