@@ -16,7 +16,7 @@
     <div>
         <label for="enter-cur"></label>
         <form action="/api/currency" method="POST">
-            From
+            <p>From</p>
             <input type="number" name="enter-num" id="enter-num" step=0.01>
             <select id="enter-cur" name="enter-cur" class="button">
                 <option value="none" selected="selected" disabled hidden>Select a currency</option>
@@ -37,7 +37,10 @@
                 <option value="USD">United States Dollar</option>
                 <option value="UAH">Ukrainian Hryvnia</option>
             </select>
-            <div>To
+            <div>
+                <p>
+                    To
+                </p>
                 <select id="convert-cur" name="convert-cur" class="button">
                     <option value="none" selected="selected" disabled hidden>Select a currency</option>
                     <option value="AUD">Australian Dollar</option>

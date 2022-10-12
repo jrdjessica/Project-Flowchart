@@ -11,12 +11,14 @@
     <h2>Inspiration</h2>
 
     <form action="/api/inspiration">
-        <label for="search">Search: </label>
+        <label for="search">
+            <p>Search: </p>
+        </label>
         <input type='text' name="search-term" id="search">
         <button type="submit" class="button">Submit</button>
     </form>
     <div id="recent-searches">
-        Recent search:
+        <p>Recent searches:</p>
         {% if searches is defined %}
         {% for term in searches %}
         <button id="search-{{ term }}" onClick=clickWord(name) name="{{ term }}" class="button">

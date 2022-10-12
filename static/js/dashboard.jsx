@@ -66,7 +66,7 @@ function DashboardContainer() {
         // Display information when button is clicked
         return (
             <div id={props.location}>
-                {props.evt}
+                <p>{props.evt}</p>
             </div>
         )
     };
