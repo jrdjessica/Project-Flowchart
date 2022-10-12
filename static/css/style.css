@@ -12,7 +12,7 @@
 }
 
 .navbar-custom-theme {
-    background: linear-gradient(to left, #f9d1d4, #d3cdec);
+    background: linear-gradient(to left, #f8f3ef, #dae4eb, #bed4f5);
     width: 100%;
     padding-top: 5px;
     padding-bottom: 0;
@@ -45,7 +45,7 @@ h2 {
     font-size: 70px;
     text-transform: capitalize;
     padding-top: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 5px;
 }
 
 h3 {
@@ -63,6 +63,14 @@ h4 {
     letter-spacing: 1px;
     padding-top: 5px;
     padding-bottom: 5px;
+}
+
+h5 {
+    font-family: "Josefin Slab", sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    padding-bottom: 10px;
 }
 
 p {

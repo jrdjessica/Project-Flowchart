@@ -9,7 +9,7 @@ function drawChart() {
         .then(orders => {
 
             // Create table
-            var dataTable = new google.visualization.DataTable();
+            const dataTable = new google.visualization.DataTable();
 
             // Contain row data
             const chartRows = [];
@@ -49,11 +49,48 @@ function drawChart() {
             }
 
             // Element from DOM
-            var chart = new google.visualization.Calendar(document.querySelector('#calendar_basic'));
+            const chart = new google.visualization.Calendar(document.querySelector('#calendar_basic'));
 
-            var options = {
-                title: "Items Purchased",
+            const options = {
                 height: 350,
+                calendar: {
+                    dayOfWeekLabel: {
+                        fontName: 'Josefin Slab',
+                        fontSize: 12,
+                    },
+                    dayOfWeekRightSpace: 8,
+                    monthLabel: {
+                        fontName: 'Josefin Slab',
+                        fontSize: 16,
+                        color: '#01442c',
+                    },
+                    monthOutlineColor: {
+                        stroke: '#A5A7AB',
+                        strokeOpacity: 0.8,
+                        strokeWidth: 2
+                    },
+                    underMonthSpace: 10,
+                    yearLabel: {
+                        fontName: 'Josefin Slab',
+                        fontSize: 45,
+                        color: '#5f849c',
+                    },
+                    underYearSpace: 10,
+                    focusedCellColor: {
+                        stroke: 'black',
+                        strokeOpacity: 0.8,
+                        strokeWidth: 2,
+                    },
+                },
+                colorAxis: {
+                    minValue: 0, colors: ['#fefefe', '#027e3d'],
+                },
+                tooltip: {
+                    textStyle: {
+                        fontName: 'Josefin Slab',
+
+                    },
+                },
             };
 
             chart.draw(dataTable, options);

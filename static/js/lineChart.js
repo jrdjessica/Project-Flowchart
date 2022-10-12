@@ -46,13 +46,14 @@ function drawChart() {
                 ]);
             }
 
-            var options = {
+            const options = {
                 chart: {
                     title: 'Net Order vs Total Order',
                 },
                 width: 900,
                 height: 500
             };
+
 
             const chart = new google.charts.Line(document.querySelector('#linechart-material'));
 
