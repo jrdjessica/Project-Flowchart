@@ -30,6 +30,13 @@
     color: white;
 }
 
+#nav-home {
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-right: 20px;
+    margin-left: 5px;
+}
+
 body {
     text-align: center;
 }
