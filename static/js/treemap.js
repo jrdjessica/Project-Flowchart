@@ -100,9 +100,9 @@ function drawChart() {
 
             // Chart options
             tree.draw(data, {
-                minColor: '#f9f9f2',
-                midColor: '#2aab2a',
-                maxColor: '#027e3d',
+                minColor: '#e6d4ca',
+                midColor: '#e5aca4',
+                maxColor: '#ae4f47',
                 headerHeight: 15,
                 fontColor: 'black',
                 showScale: true,

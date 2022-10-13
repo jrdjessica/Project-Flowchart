@@ -94,7 +94,7 @@ function drawChart() {
                         opacity: 0.8
                     }
                 },
-                colors: ['#45ba45', '#dac420'],
+                colors: ['#1d771d', '#b4b42c'],
                 tooltip: {
                     isHtml: true,
                     textStyle: {

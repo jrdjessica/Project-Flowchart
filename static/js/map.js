@@ -5,7 +5,7 @@ function initMap() {
     const start = { lat: 39.828, lng: -98.579 };
 
     const map = new google.maps.Map(document.querySelector('#map'), {
-        zoom: 3,
+        zoom: 2,
         center: start,
         mapId: '626153b4a5c38e8d',
     });
