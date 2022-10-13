@@ -64,7 +64,7 @@ h3 {
 
 h4 {
     font-family: "Josefin Slab", sans-serif;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -110,11 +110,24 @@ p {
     letter-spacing: 1%;
 }
 
+.dash {
+    background-color: #f5f4f4;
+}
+
 .dashboard {
-    padding: 40px 5px;
-    border: 1px solid grey;
+    margin: 15px 0;
+    padding: 40px 10px;
+    border: 1px solid #bbc0c8;
     /* background-color: rgba(23, 129, 23, 0.03); */
-    /* background: linear-gradient(#f8f4ec, #e4f6ea, #cbe5d1); */
+    background: linear-gradient(#f0f1f2, #eef1f4, #f0f1f2);
+    background-color: white;
+}
+
+.dash-row {
+    background-image: url(/static/img/abstract-loop.gif);
+    background-size: 50%;
+    display: block;
+    margin: 0 auto;
 }
 
 .converter {

@@ -124,11 +124,11 @@ function DashboardContainer() {
 
     return (
         <div>
+            <div>
+                <h4>From {startDate} to {endDate}</h4>
+            </div>
             <div class="container">
-                <div class="row">
-                    <div>
-                        <h4>From {startDate} to {endDate}</h4>
-                    </div>
+                <div class="row dash-row">
                     <div class="col-md-2"></div>
                     <div class="col-12 col-sm-6 col-md-2 dashboard">
                         <h4>Number of orders</h4>
