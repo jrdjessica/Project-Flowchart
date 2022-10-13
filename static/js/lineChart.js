@@ -36,8 +36,8 @@ function drawChart() {
 
             // Add columns to chart
             data.addColumn('datetime', 'Time');
-            data.addColumn('number', 'Net Order in Dollars');
-            data.addColumn('number', 'Total Order in Dollars');
+            data.addColumn('number', 'Net Order Value');
+            data.addColumn('number', 'Total Order Value');
 
             // Add rows to chart
             for (let row of chartRow) {
@@ -48,10 +48,58 @@ function drawChart() {
 
             const options = {
                 chart: {
-                    title: 'Net Order vs Total Order',
+                    // title: 'Net Order vs Total Order',
                 },
                 width: 900,
-                height: 500
+                height: 500,
+                hAxis: {
+                    titleTextStyle: {
+                        fontName: 'Josefin Slab',
+                        fontSize: 25,
+                        color: '#01442c'
+                    },
+                    textStyle: {
+                        fontName: 'Josefin Slab',
+                        fontSize: 16,
+                        color: '#01442c',
+                    }
+                },
+                vAxis: {
+                    title: 'Order Value',
+                    titleTextStyle: {
+                        fontName: 'Josefin Slab',
+                        fontSize: 25,
+                        color: '#01442c'
+                    },
+                    textStyle: {
+                        fontName: 'Josefin Slab',
+                        fontSize: 16,
+                        color: '#01442c'
+                    },
+                },
+                legend: {
+                    alignment: 'start',
+                    textStyle: {
+                        fontName: 'Playfair Display',
+                        fontSize: 16,
+                        color: '#01442c'
+                    }
+                },
+                annotations: {
+                    textStyle: {
+                        fontName: 'Times-Roman',
+                        fontSize: 18,
+                        bold: true,
+
+                        opacity: 0.8
+                    }
+                },
+                colors: ['#45ba45', '#dac420'],
+                tooltip: {
+                    textStyle: {
+                        fontName: 'Josefin Slab',
+                    },
+                },
             };
 
 

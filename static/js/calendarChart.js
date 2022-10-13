@@ -88,7 +88,6 @@ function drawChart() {
                 tooltip: {
                     textStyle: {
                         fontName: 'Josefin Slab',
-
                     },
                 },
             };
