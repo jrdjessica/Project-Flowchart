@@ -2,12 +2,20 @@
 
 {% block body %}
 <h2>Instructions for upload</h2>
-<ol>
-    <li>Sign into your etsy account</li>
-    <li>Click your profile icon in the top right and choose account settings</li>
-    <li>Choose Settings > Finance > Download Data</li>
-    <li>In the orders tab, choose "Orders" in the dropdown menu and any timeframe</li>
-</ol>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-12 col-lg-6 instructions">
+            <ol>
+                <li>Sign into your etsy account</li>
+                <li>Click your profile icon in the top right and choose account settings</li>
+                <li>Choose Settings > Finance > Download Data</li>
+                <li>In the orders tab, choose "Orders" in the dropdown menu and any timeframe</li>
+            </ol>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+</div>
 
 <!-- User uploads one file, send file data -->
 <form action="/upload" method="POST" enctype=multipart/form-data>

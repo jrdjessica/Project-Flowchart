@@ -96,10 +96,12 @@ function drawChart() {
                 },
                 colors: ['#45ba45', '#dac420'],
                 tooltip: {
+                    isHtml: true,
                     textStyle: {
                         fontName: 'Josefin Slab',
+                        color: 'red'
                     },
-                },
+                }
             };
 
 

@@ -78,11 +78,11 @@ p {
     font-size: 20px;
 }
 
-li {
+/* li {
     font-family: "Josefin Slab", sans-serif;
     letter-spacing: 1%;
     font-size: 20px;
-}
+} */
 
 .form-grid {
     margin-top: 2%;
@@ -93,6 +93,14 @@ li {
 .form {
     background: #efe0d6;
     border: 3px solid white;
+}
+
+.instructions {
+    text-align: left;
+    font-size: 22px;
+    padding-top: 10px;
+    font-family: "Josefin Slab", sans-serif;
+    letter-spacing: 1%;
 }
 
 .dashboard {
