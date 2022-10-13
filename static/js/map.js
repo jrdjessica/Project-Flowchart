@@ -7,6 +7,7 @@ function initMap() {
     const map = new google.maps.Map(document.querySelector('#map'), {
         zoom: 3,
         center: start,
+        mapId: '626153b4a5c38e8d',
     });
 
     fetch('/api/shop')
@@ -20,6 +21,7 @@ function initMap() {
                 const marker = new google.maps.Marker({
                     position: { lat: lat, lng: lng },
                     map: map,
+                    icon: '/static/img/icons-point.png'
                 });
 
                 // Content inside info window

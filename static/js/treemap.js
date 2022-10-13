@@ -100,12 +100,16 @@ function drawChart() {
 
             // Chart options
             tree.draw(data, {
-                minColor: '#f00',
-                midColor: '#ddd',
-                maxColor: '#0d0',
+                minColor: '#efefc8',
+                midColor: '#b8de8d',
+                maxColor: '#9bd979',
                 headerHeight: 15,
                 fontColor: 'black',
-                showScale: true
+                showScale: true,
+                textStyle: {
+                    fontName: 'Playfair Display',
+                    fontSize: 18,
+                }
             });
         }
         )
