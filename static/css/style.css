@@ -129,7 +129,7 @@ p {
 }
 
 .button {
-    margin: 25px;
+    margin: 20px;
     display: inline-block;
     font-family: "Josefin Slab", sans-serif;
     text-transform: uppercase;
@@ -200,16 +200,10 @@ input[type='number'] {
     padding: 0 4px;
 }
 
-.column {
-    flex: 50%;
-    padding: 0 4px;
-
-}
-
 .column img {
     margin-top: 8px;
     vertical-align: middle;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 5px;
+    padding: 10px 5px;
+    width: 100%;
+    border-radius: 25px;
 }

@@ -7,9 +7,9 @@ function clickWord(e) {
 let images = document.getElementsByClassName("column");
 
 
-function displayImages() {
-    for (let i = 0; i < images.length; i += 1) {
-        images[i].style.flex = "33%";
-    }
-}
-displayImages()
+// function displayImages() {
+//     for (let i = 0; i < images.length; i += 1) {
+//         images[i].style.flex = "32%";
+//     }
+// }
+// displayImages()

@@ -217,7 +217,58 @@ def show_sale_orders():
 def show_inspiration():
     """Show inspiration."""
 
-    return render_template('inspiration.html')
+    if session.get('searches'):
+        searches = session['searches']
+        thumbnail_url1 = session['thumbnail_url1']
+        thumbnail_url2 = session['thumbnail_url2']
+        thumbnail_url3 = session['thumbnail_url3']
+        thumbnail_url4 = session['thumbnail_url4']
+        thumbnail_url5 = session['thumbnail_url5']
+        thumbnail_url6 = session['thumbnail_url6']
+        thumbnail_url7 = session['thumbnail_url7']
+        thumbnail_url8 = session['thumbnail_url8']
+        thumbnail_url9 = session['thumbnail_url9']
+        thumbnail_url10 = session['thumbnail_url10']
+        thumbnail_url11 = session['thumbnail_url11']
+        thumbnail_url12 = session['thumbnail_url12']
+        thumbnail_url13 = session['thumbnail_url13']
+        thumbnail_url14 = session['thumbnail_url14']
+        thumbnail_url15 = session['thumbnail_url15']
+    else:
+        searches = ''
+        thumbnail_url1 = ''
+        thumbnail_url2 = ''
+        thumbnail_url3 = ''
+        thumbnail_url4 = ''
+        thumbnail_url5 = ''
+        thumbnail_url6 = ''
+        thumbnail_url7 = ''
+        thumbnail_url8 = ''
+        thumbnail_url9 = ''
+        thumbnail_url10 = ''
+        thumbnail_url11 = ''
+        thumbnail_url12 = ''
+        thumbnail_url13 = ''
+        thumbnail_url14 = ''
+        thumbnail_url15 = ''
+
+    return render_template('inspiration.html',
+                           searches=searches,
+                           thumbnail_url1=thumbnail_url1,
+                           thumbnail_url2=thumbnail_url2,
+                           thumbnail_url3=thumbnail_url3,
+                           thumbnail_url4=thumbnail_url4,
+                           thumbnail_url5=thumbnail_url5,
+                           thumbnail_url6=thumbnail_url6,
+                           thumbnail_url7=thumbnail_url7,
+                           thumbnail_url8=thumbnail_url8,
+                           thumbnail_url9=thumbnail_url9,
+                           thumbnail_url10=thumbnail_url10,
+                           thumbnail_url11=thumbnail_url11,
+                           thumbnail_url12=thumbnail_url12,
+                           thumbnail_url13=thumbnail_url13,
+                           thumbnail_url14=thumbnail_url14,
+                           thumbnail_url15=thumbnail_url15)
 
 
 @app.route('/api/searches')
@@ -252,32 +303,26 @@ def get_image_search():
     response.raise_for_status()
     search_results = response.json()
 
-    thumbnail_url1 = search_results['value'][0]['thumbnailUrl']
-    thumbnail_url2 = search_results['value'][1]['thumbnailUrl']
-    thumbnail_url3 = search_results['value'][2]['thumbnailUrl']
-    thumbnail_url4 = search_results['value'][3]['thumbnailUrl']
-    thumbnail_url5 = search_results['value'][4]['thumbnailUrl']
-    thumbnail_url6 = search_results['value'][5]['thumbnailUrl']
-    thumbnail_url7 = search_results['value'][6]['thumbnailUrl']
-    thumbnail_url8 = search_results['value'][7]['thumbnailUrl']
-    thumbnail_url9 = search_results['value'][8]['thumbnailUrl']
+    session['thumbnail_url1'] = search_results['value'][0]['thumbnailUrl']
+    session['thumbnail_url2'] = search_results['value'][1]['thumbnailUrl']
+    session['thumbnail_url3'] = search_results['value'][2]['thumbnailUrl']
+    session['thumbnail_url4'] = search_results['value'][3]['thumbnailUrl']
+    session['thumbnail_url5'] = search_results['value'][4]['thumbnailUrl']
+    session['thumbnail_url6'] = search_results['value'][5]['thumbnailUrl']
+    session['thumbnail_url7'] = search_results['value'][6]['thumbnailUrl']
+    session['thumbnail_url8'] = search_results['value'][7]['thumbnailUrl']
+    session['thumbnail_url9'] = search_results['value'][8]['thumbnailUrl']
+    session['thumbnail_url10'] = search_results['value'][9]['thumbnailUrl']
+    session['thumbnail_url11'] = search_results['value'][10]['thumbnailUrl']
+    session['thumbnail_url12'] = search_results['value'][11]['thumbnailUrl']
+    session['thumbnail_url13'] = search_results['value'][12]['thumbnailUrl']
+    session['thumbnail_url14'] = search_results['value'][13]['thumbnailUrl']
+    session['thumbnail_url15'] = search_results['value'][14]['thumbnailUrl']
 
     if len(session['searches']) > 5:
         searches.pop(0)
 
-    searches = session['searches']
-
-    return render_template('inspiration.html',
-                           searches=searches,
-                           thumbnail_url1=thumbnail_url1,
-                           thumbnail_url2=thumbnail_url2,
-                           thumbnail_url3=thumbnail_url3,
-                           thumbnail_url4=thumbnail_url4,
-                           thumbnail_url5=thumbnail_url5,
-                           thumbnail_url6=thumbnail_url6,
-                           thumbnail_url7=thumbnail_url7,
-                           thumbnail_url8=thumbnail_url8,
-                           thumbnail_url9=thumbnail_url9)
+    return redirect('/inspiration')
 
 
 if __name__ == "__main__":
