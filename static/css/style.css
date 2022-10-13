@@ -104,6 +104,19 @@ p {
     /* background: linear-gradient(#f8f4ec, #e4f6ea, #cbe5d1); */
 }
 
+.tree-img {
+    padding-top: 5%;
+    padding-bottom: 2%;
+    position: relative;
+}
+
+.tree-txt {
+    position: absolute;
+    top: 80%;
+    left: 35%;
+    color: white;
+}
+
 .button {
     margin: 25px;
     display: inline-block;
@@ -144,6 +157,7 @@ input[type='password'] {
     display: block;
     text-align: center;
     margin: 0 auto;
+    padding-bottom: 55px;
 }
 
 .row {
