@@ -159,7 +159,9 @@ def show_dashboard():
 def show_map():
     """Show map and tree map."""
 
-    return render_template('map.html')
+    key = os.environ['API_KEY']
+
+    return render_template('map.html', key=key)
 
 
 @app.route('/calendar')
