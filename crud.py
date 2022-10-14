@@ -60,7 +60,6 @@ def create_customer(line):
     parms['key'] = key
     url = 'https://maps.googleapis.com/maps/api/geocode/json?' + \
         urllib.parse.urlencode(parms)
-    print(url)
 
     uh = urllib.request.urlopen(url, context=ctx)
     data = uh.read().decode()
@@ -68,7 +67,7 @@ def create_customer(line):
     js = json.loads(data)
 
     if js['status'] != 'OK':
-        print(f'js["status"]')
+        print(js["status"])
 
     lat = js['results'][0]['geometry']['location']['lat']
     lng = js['results'][0]['geometry']['location']['lng']
