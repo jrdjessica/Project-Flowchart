@@ -47,9 +47,6 @@ function drawChart() {
             }
 
             const options = {
-                chart: {
-                    // title: 'Net Order vs Total Order',
-                },
                 width: 900,
                 height: 500,
                 hAxis: {
@@ -117,7 +114,6 @@ function drawChart() {
                     const item = selection[i];
                     const value = data.getValue(item['row'], item['column']).toFixed(2);
 
-                    console.log(value);
                     document.querySelector('#enter-num').value = value;
                 }
             }

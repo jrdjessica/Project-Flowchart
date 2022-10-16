@@ -34,12 +34,11 @@ function drawChart() {
                         break
                     }
                 }
-
             }
 
             // Create columns
             dataTable.addColumn({ type: 'date', id: 'Date' });
-            dataTable.addColumn({ type: 'number', id: 'Won/Loss' });
+            dataTable.addColumn({ type: 'number', id: 'Items' });
 
             // Create row
             for (let row of chartRows) {

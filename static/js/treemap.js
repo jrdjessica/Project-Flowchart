@@ -94,7 +94,6 @@ function drawChart() {
                 ]);
             }
 
-
             // Element from DOM
             const tree = new google.visualization.TreeMap(document.querySelector('#treemap'));
 
@@ -114,6 +113,4 @@ function drawChart() {
             });
         }
         )
-
-
 }
