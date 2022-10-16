@@ -74,24 +74,61 @@ class Order(db.Model):
 def example_data():
     """Sample data."""
 
-    user1 = User(email='email1@test.com', password='test')
-    user2 = User(email='email2@test.com', password='test')
+    user1 = User(user_id=0, email='demo@demo.com', password='demodemo')
 
     customers = [
-        Customer(user=user1, fname='JOE', lname='BYE',
-                 city='NEW YORK', state='CA'),
-        Customer(user=user1, fname='Jane', lname='BARB',
-                 city='santa ANA', state='OR'),
-        Customer(user=user2, fname='Barbie', state='CA'),
-        Customer(user=user2, fname='Bill', state='WA'),
+        Customer(user=user1, fname='Joe', lname='Lawrence',
+                 street='Thousand Oaks Blvd', city='Thousand Oaks', state='CA', zipcode='91362', country='United States',
+                 address='Thousand Oaks Blvd, Thousand Oaks, CA, 91362, United States', latitude=34.1747776, longitude=-118.8433763),
+        Customer(user=user1, fname='Jane', lname='Cartwright',
+                 street='Broadway Blvd', city='Kansas City', state='MO', zipcode='64112', country='United States',
+                 address='Broadway Blvd, Kansas City, MO, 64112, United States', latitude=39.0495636, longitude=-94.6177897),
+        Customer(user=user1, fname='Michael', lname='Sherman',
+                 street='S Jackson St', city='Montgomery', state='AL', zipcode='36104', country='United States',
+                 address='S Jackson St, Montgomery, AL, 36104, United States', latitude=32.3695557, longitude=-86.2909703),
+        Customer(user=user1, fname='Sarah', lname='Collin',
+                 street='E Columbia Ave', city='Champaign', state='IL', zipcode='61820', country='United States',
+                 address='E Columbia Ave, Champaign, IL, 61820, United States', latitude=40.1143531, longitude=-88.2532443),
+        Customer(user=user1, fname='Heidi', lname='Forte',
+                 street='Victoria Dr', city='Vancouver', state='BC', zipcode='V5P 3T7', country='Canada',
+                 address='Victoria Dr, Vancouver, BC, V5P 3T7, Canada', latitude=49.227231, longitude=-123.0657206),
+        Customer(user=user1, fname='Addi', lname='Walker',
+                 street='Euclid Ave', city='Cleveland', state='OH', zipcode='44115', country='United States',
+                 address='Euclid Ave, Cleveland, OH, 44115, United States', latitude=41.4918881, longitude=-81.6877121)
     ]
 
     orders = [
-        Order(order_id='2329087707',
-              customer=customers[0], num_items=1, date=datetime.strptime('12/31/2021', "%m/%d/%Y"), net=1.80, total=1.5),
-        Order(order_id='2322080584',
-              customer=customers[1], num_items=1, date=datetime.strptime('12/11/2021', "%m/%d/%Y"), net=2.80, total=1.8)
+        Order(order_id='2329392707',
+              customer=customers[0], user=user1, num_items=1, date=datetime.strptime('1/1/2020', "%m/%d/%Y"), net=6.80, total=7.5),
+        Order(order_id='2322000584',
+              customer=customers[1], user=user1, num_items=1, date=datetime.strptime('2/1/2020', "%m/%d/%Y"), net=5.80, total=6.8),
+        Order(order_id='2329294807',
+              customer=customers[2], user=user1, num_items=2, date=datetime.strptime('3/12/2020', "%m/%d/%Y"), net=7.90, total=8.5),
+        Order(order_id='2837000584',
+              customer=customers[3], user=user1, num_items=3, date=datetime.strptime('5/20/2020', "%m/%d/%Y"), net=10.10, total=12.8),
+        Order(order_id='0594392707',
+              customer=customers[4], user=user1, num_items=4, date=datetime.strptime('6/12/2020', "%m/%d/%Y"), net=20.20, total=17.5),
+        Order(order_id='2339580584',
+              customer=customers[5], user=user1, num_items=1, date=datetime.strptime('7/26/2020', "%m/%d/%Y"), net=3.80, total=3.2)
     ]
+
+    # user2 = User(email='email2@test.com', password='test')
+
+    # customers = [
+    #     Customer(user=user1, fname='JOE', lname='BYE',
+    #              city='NEW YORK', state='CA'),
+    #     Customer(user=user1, fname='Jane', lname='BARB',
+    #              city='santa ANA', state='OR'),
+    #     Customer(user=user2, fname='Barbie', state='CA'),
+    #     Customer(user=user2, fname='Bill', state='WA'),
+    # ]
+
+    # orders = [
+    #     Order(order_id='2329087707',
+    #           customer=customers[0], num_items=1, date=datetime.strptime('12/31/2021', "%m/%d/%Y"), net=1.80, total=1.5),
+    #     Order(order_id='2322080584',
+    #           customer=customers[1], num_items=1, date=datetime.strptime('12/11/2021', "%m/%d/%Y"), net=2.80, total=1.8)
+    # ]
 
     db.session.add_all(orders)
     db.session.commit()
@@ -115,6 +152,6 @@ if __name__ == "__main__":
 
     # creates tables and sample data
     db.create_all()
-    # example_data()
+    example_data()
 
     print("Connected to the db!")

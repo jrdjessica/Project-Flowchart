@@ -7,6 +7,7 @@ from model import db, connect_to_db, Order
 from werkzeug.utils import secure_filename
 
 import crud
+import csv
 import seed
 import os
 import requests
@@ -29,7 +30,7 @@ def show_homepage():
 def show_demo():
     """Users view demo data."""
 
-    session['user_id'] = 1
+    session['user_id'] = 0
 
     return redirect('/dashboard')
 
