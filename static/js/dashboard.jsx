@@ -48,7 +48,12 @@ function DashboardContainer() {
             <div>
                 <div class="container">
                     <div class="row">
-                        <div></div>
+                        <div class="row">
+                            <div class="col-12">
+                                <button type="button" className="button" onClick={() => CreateFact(numberDays)}>Reveal facts</button>
+                                {<DisplayInfo evt={fact} location="fact" />}
+                            </div>
+                        </div>
                         <div class="col-6">
                             <button type="button" className="button" onClick={() => onClick(showText, setShowText)}>Reveal countries</button>
                             {showText ? <DisplayInfo evt={countries} location="countries" /> : null}
@@ -56,12 +61,6 @@ function DashboardContainer() {
                         <div class="col-6">
                             <button type="button" className="button" onClick={() => onClick(showDays, setShowDays)}>Reveal days</button>
                             {showDays ? <DisplayInfo evt={numberDays} location="num-days" /> : null}
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <button type="button" className="button" onClick={() => CreateFact(numberDays)}>Reveal facts</button>
-                                {<DisplayInfo evt={fact} location="fact" />}
-                            </div>
                         </div>
                     </div>
                 </div>

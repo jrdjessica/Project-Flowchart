@@ -109,7 +109,6 @@ def upload_file():
 
         if file_type == 'csv':
             seed.get_orders(file, filename)
-            flash('Success')
             if file == uploaded_files[-1]:
                 return redirect('/dashboard')
         elif file_type != 'csv':
@@ -328,4 +327,4 @@ def get_image_search():
 
 if __name__ == "__main__":
     connect_to_db(app)
-    app.run(debug=True, host="0.0.0.0")
+    app.run()
