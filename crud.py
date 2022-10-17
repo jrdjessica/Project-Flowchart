@@ -41,7 +41,7 @@ def create_customer(line):
 
     user_id = session['user_id']
 
-    # create address
+    # Create address
     address_components = ['Street 1', 'Street 2', 'Ship City',
                           'Ship State', 'Ship Zipcode', 'Ship Country']
 
@@ -53,7 +53,7 @@ def create_customer(line):
         elif line[comp] != '':
             address += f'{line[comp]}, '
 
-    # create latitude and longitude
+    # Create latitude and longitude
     parms = dict()
     parms['address'] = address
     key = os.environ['GEO_KEY']
@@ -72,7 +72,7 @@ def create_customer(line):
     lat = js['results'][0]['geometry']['location']['lat']
     lng = js['results'][0]['geometry']['location']['lng']
 
-    # create instance
+    # Create instance
     customer = Customer(user_id=user_id, fname=line['First Name'].title(), lname=line['Last Name'].title(), street=line['Street 1'], street2=line['Street 2'],
                         city=line['Ship City'].title(), state=line['Ship State'], zipcode=line['Ship Zipcode'], country=line['Ship Country'], address=address, latitude=lat, longitude=lng)
 

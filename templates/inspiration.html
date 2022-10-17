@@ -11,6 +11,7 @@
     <h2>Inspiration</h2>
     <p>Spark your creativity</p>
 
+    <!-- Send search term to Bing Image Search API -->
     <form action="/api/inspiration">
         <label for="search">
             <p>Image Search: </p>
@@ -29,6 +30,7 @@
         {% endif %}
     </div>
 
+    <!-- Display images in grid -->
     <div id="inspiration"></div>
     {% if thumbnail_url1 is defined %}
     <div class="container">
@@ -57,8 +59,8 @@
         </div>
     </div>
     {% endif %}
-    <script src=" /static/js/inspiration.js"></script>
 
+    <script src=" /static/js/inspiration.js"></script>
 </body>
 
 {% endblock body %}

@@ -7,7 +7,6 @@ from model import db, connect_to_db, Order
 from werkzeug.utils import secure_filename
 
 import crud
-import csv
 import seed
 import os
 import requests
@@ -70,7 +69,6 @@ def user_login():
         return redirect('/')
     else:
         session['user_id'] = user.user_id
-        flash('You are logged in.')
         return redirect('/file')
 
 
@@ -151,7 +149,7 @@ def shop_info():
 
 @app.route('/dashboard')
 def show_dashboard():
-    """Show dashboard."""
+    """Show user dashboard."""
 
     return render_template('dashboard.html')
 

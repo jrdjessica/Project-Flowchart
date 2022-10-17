@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% block title %}Upload{% endblock %}
+
 {% block body %}
 <h2>Instructions for upload</h2>
 <div class="container">
@@ -17,7 +19,7 @@
     </div>
 </div>
 
-<!-- User uploads one file, send file data -->
+<!-- User uploads file -->
 <form action="/upload" method="POST" enctype=multipart/form-data>
     <p>
         <label for="upload">Upload your file here: </label>
