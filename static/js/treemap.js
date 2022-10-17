@@ -7,7 +7,6 @@ function drawChart() {
     fetch('/api/shop')
         .then(res => res.json())
         .then(orders => {
-
             // Country parent data['United States', 'Global', 0]
             let rowCountry = [[orders[0].country, 'Global', 0]];
 

@@ -50,6 +50,7 @@ function drawChart() {
             // Element from DOM
             const chart = new google.visualization.Calendar(document.querySelector('#calendar_basic'));
 
+            // Chart options
             const options = {
                 height: 350,
                 calendar: {

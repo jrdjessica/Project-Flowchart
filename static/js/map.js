@@ -1,9 +1,10 @@
 'use strict';
 
 function initMap() {
-
+    // Start location
     const start = { lat: 39.828, lng: -98.579 };
 
+    // Create map
     const map = new google.maps.Map(document.querySelector('#map'), {
         zoom: 2,
         center: start,

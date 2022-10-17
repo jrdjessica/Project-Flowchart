@@ -46,6 +46,7 @@ function drawChart() {
                 ]);
             }
 
+            // Chart options
             const options = {
                 width: 900,
                 height: 500,
@@ -108,6 +109,7 @@ function drawChart() {
 
             google.visualization.events.addListener(chart, 'select', selectHandler);
 
+            // Select point on chart to get value
             function selectHandler(e) {
                 const selection = chart.getSelection();
                 for (let i = 0; i < selection.length; i++) {
