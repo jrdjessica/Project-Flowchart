@@ -6,7 +6,6 @@ Etsy Insider provides Etsy shop owners a tool to visualize and analyze their sho
 
 
 
----
 ## Tech Stack
 - Python
 - Javascript (AJAX/JQuery)
@@ -21,7 +20,6 @@ Etsy Insider provides Etsy shop owners a tool to visualize and analyze their sho
 
 
 
----
 ## Features
 - Upload csv data file
 - Dashboard of shop's performance stats
@@ -33,7 +31,6 @@ Etsy Insider provides Etsy shop owners a tool to visualize and analyze their sho
 
 
 
----
 ## Screenshots
 ![Homepage](/static/img/Homepage.png "Homepage")
 
