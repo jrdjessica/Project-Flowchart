@@ -112,24 +112,6 @@ def example_data():
               customer=customers[5], user=user1, num_items=1, date=datetime.strptime('7/26/2020', "%m/%d/%Y"), net=3.80, total=3.2)
     ]
 
-    # user2 = User(email='email2@test.com', password='test')
-
-    # customers = [
-    #     Customer(user=user1, fname='JOE', lname='BYE',
-    #              city='NEW YORK', state='CA'),
-    #     Customer(user=user1, fname='Jane', lname='BARB',
-    #              city='santa ANA', state='OR'),
-    #     Customer(user=user2, fname='Barbie', state='CA'),
-    #     Customer(user=user2, fname='Bill', state='WA'),
-    # ]
-
-    # orders = [
-    #     Order(order_id='2329087707',
-    #           customer=customers[0], num_items=1, date=datetime.strptime('12/31/2021', "%m/%d/%Y"), net=1.80, total=1.5),
-    #     Order(order_id='2322080584',
-    #           customer=customers[1], num_items=1, date=datetime.strptime('12/11/2021', "%m/%d/%Y"), net=2.80, total=1.8)
-    # ]
-
     db.session.add_all(orders)
     db.session.commit()
 
